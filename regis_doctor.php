@@ -109,47 +109,37 @@
                 <a href="regis_doctor.php" class="btn btn-outline-info mx-2">Doctor</a>
             </div>
             <div class="form-section">
-                <form>
+                <form action="insert.php" method="POST">
                     <h3 class="mb-4">Doctor</h3>
                     <div class="row">
                         <div class="col-md-6 mb-3">
-                            <input class="form-control" type="text" placeholder="ชื่อ-สกุล" required>
+                            <input class="form-control" type="text" name="name_lastname" placeholder="ชื่อ-สกุล" required>
                         </div>
                         <div class="col-md-6 mb-3">
-                            <input class="form-control" type="number" placeholder="เลขบัตรประจำตัวประชาชน" required>
+                            <input class="form-control" type="text" name="license" placeholder="เลขบัตรประจำตัวประชาชน" required>
                         </div>
                         <div class="col-md-6 mb-3">
-                            <input class="form-control" type="date" placeholder="วัน/เดือน/ปีเกิด" required>
+                            <input class="form-control" type="date" name="date" placeholder="วัน/เดือน/ปีเกิด" required>
                         </div>
                         <div class="col-md-6 mb-3">
-                            <select class="form-control" required>
+                            <select class="form-control" name="gender" required>
                                 <option value="">เพศ</option>
-                                <option value="male">ชาย</option>
-                                <option value="female">หญิง</option>
-                                <option value="other">อื่น ๆ</option>
+                                <option value="ชาย">ชาย</option>
+                                <option value="หญิง">หญิง</option>
+                                <option value="อื่น ๆ">อื่น ๆ</option>
                             </select>
                         </div>
                         <div class="col-md-4 mb-3">
-                            <input class="form-control" type="number" placeholder="อายุ" required>
+                            <input class="form-control" type="number" name="age" placeholder="อายุ" required>
                         </div>
-                        <div class="col-md-4 mb-3">
-                            <input class="form-control" type="number" placeholder="น้ำหนัก (kg)" required>
-                        </div>
-                        <div class="col-md-4 mb-3">
-                            <input class="form-control" type="number" placeholder="ส่วนสูง (cm)" required>
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <input class="form-control" type="text" placeholder="ประวัติแพ้ยา" required>
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <input class="form-control" type="text" placeholder="โรคประจำตัว">
+                        <div class="col-md-8 mb-3">
+                            <input class="form-control" type="number" name="medical" placeholder="เลขที่ใบประกอบวิชาชีพ" required>
                         </div>
                         <div class="col-md-12 mb-3">
-                            <textarea class="form-control" placeholder="ที่อยู่" rows="2" required></textarea>
+                            <textarea class="form-control" name="address" placeholder="ที่อยู่" rows="2" required></textarea>
                         </div>
-                        <div class="col-md-12 mb-4">
-                            <input class="form-control" type="email" placeholder="อีเมล" required>
-                        </div>
+
+                        <input type="hidden" name="status" value="1"> <!-- default: 1 -->
                         <div class="text-center">
                             <button class="btn btn-primary btn-xl text-uppercase" type="submit">สมัครสมาชิก</button>
                         </div>
@@ -159,6 +149,14 @@
 
         </div>
     </section>
+
+    <!--   echo"ชื่อ : $name <br>";
+    echo"เลขบัตรประจำตัวประชาชน : $id <br>";
+    echo"วันเกิด : $ddmmyy <br>";
+    echo"เพศ : $gender <br>";
+    echo"อายุ : $age <br>";
+    echo"เลขที่ใบประกอบวิชาชีพ : $medical <br>";
+    echo"ที่อยู่ : $address <br>"; -->
 
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>

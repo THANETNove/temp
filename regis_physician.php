@@ -110,7 +110,7 @@
             </div>
 
             <div class="form-section">
-                <form action="insert_admin.php" method="POST">
+                <form action="insert.php" method="POST">
                     <h3 class="mb-4">แพทย์</h3>
                     <div class="row">
                         <div class="col-md-6 mb-3">

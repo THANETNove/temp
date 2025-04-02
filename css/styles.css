@@ -3668,6 +3668,10 @@ textarea.form-control-lg {
   background-color: transparent;
   border-color: transparent;
 }
+
+.nav-item:active {
+color: #ffc800;
+}
 .nav-tabs .nav-link.active,
 .nav-tabs .nav-item.show .nav-link {
   color: var(--bs-nav-tabs-link-active-color);
@@ -10906,6 +10910,8 @@ p {
 #mainNav .navbar-nav .nav-item .nav-link.active, #mainNav .navbar-nav .nav-item .nav-link:hover {
   color: #ffc800;
 }
+
+
 
 @media (min-width: 992px) {
   #mainNav {

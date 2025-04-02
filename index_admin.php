@@ -56,8 +56,8 @@
                     <li class="nav-item"><a class="nav-link" href="#services">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="#portfolio">Advice</a></li>
                     <li class="nav-item"><a class="nav-link" href="#about">Food</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#team">Patient</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#team">Doctor</a></li>
+                    <li class="nav-item"><a class="nav-link" href="patient.php">Patient</a></li>
+                    <li class="nav-item"><a class="nav-link" href="doctor.php">Doctor</a></li>
                     <!-- <li class="nav-item"><a class="nav-link" href="#contact">Advise for patient</a></li> -->
                     <?php if (!isset($_SESSION['user_id'])): ?>
                         <li class="nav-item"><a class="nav-link" href="login.php">Login</a></li>

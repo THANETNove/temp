@@ -53,10 +53,13 @@
         .left-image {
             width: 45%;
             height: auto;
-            background: url('assets/img/portfolio/log_reg.png') no-repeat center center;
+            background: url('assets/img/portfolio/login.png') no-repeat center center;
             background-size: cover;
             background-repeat: no-repeat;
             background-position: center;
+            border-bottom-left-radius: 16px;
+            border-top-left-radius: 16px;
+
         }
 
 
@@ -149,17 +152,14 @@
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
         <div class="container">
-            <a class="navbar-brand" href="#page-top"><img src="assets/img/navbar-logo.svg" alt="..." width="160" height="1600" /></a>
+            <a class="navbar-brand" href="index.php"><img src="assets/img/navbar-logo.svg" alt="..." width="160" height="1600" /></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 Menu
                 <i class="fas fa-bars ms-1"></i></button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
                     <li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#portfolio">Advice</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#about">About food</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#page-top">Login</a></li>
-                    <li class="nav-item"><a class="nav-link" href="regis_physician.php">register</a></li>
+                    <li class="nav-item"><a class="nav-link" href="regis_patient.php">register</a></li>
                 </ul>
             </div>
         </div>

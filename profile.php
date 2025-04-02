@@ -104,14 +104,35 @@ mysqli_close($conn);
 <body id="page-top">
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
         <div class="container">
-            <a class="navbar-brand nav-link" href="#page-top"><img src="assets/img/navbar-logo.svg" alt="..." /></a>
+            <a class="navbar-brand nav-link"
+                <?php if ($user['status'] == 1): // แพทย์ 
+                ?>
+                href="index.php"
+                <?php elseif ($user['status'] == 2): // แอดมิน 
+                ?>
+                href="index_admin.php"
+                <?php elseif ($user['status'] == 3): // หมอ 
+                ?>
+                href="index_doctor.php"
+                <?php endif; ?>><img src="assets/img/navbar-logo.svg" alt="..." /></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 Menu
                 <i class="fas fa-bars ms-1"></i>
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                    <li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>
+                    <li class="nav-item"><a class="nav-link"
+                            <?php if ($user['status'] == 1): // แพทย์ 
+                            ?>
+                            href="index.php"
+                            <?php elseif ($user['status'] == 2): // แอดมิน 
+                            ?>
+                            href="index_admin.php"
+                            <?php elseif ($user['status'] == 3): // หมอ 
+                            ?>
+                            href="index_doctor.php"
+                            <?php endif; ?>>Home</a>
+                    </li>
                     <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
                     <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
                     <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
@@ -140,7 +161,16 @@ mysqli_close($conn);
         <div class="container">
             <div class="profile-card">
                 <img src="assets/img/portfolio/pa.jpg" alt="Patient" class="profile-img">
-                <div class="profile-title">โปรไฟล์ผู้ป่วย</div>
+                <?php if ($user['status'] == 1): // แพทย์ 
+                ?>
+                    <div class="profile-title">โปรไฟล์ผู้ป่วย</div>
+                <?php elseif ($user['status'] == 2): // แอดมิน 
+                ?>
+                    <div class="profile-title">โปรไฟล์ Admin</div>
+                <?php elseif ($user['status'] == 3): // หมอ 
+                ?>
+                    <div class="profile-title">โปรไฟล์ Doctor</div>
+                <?php endif; ?>
                 <div class="profile-info">
                     <p><strong>ชื่อ-นามสกุล:</strong> <?php echo $user['name_lastname']; ?></p>
                     <p><strong>อายุ:</strong> <?php echo $user['age']; ?> ปี</p>
@@ -163,8 +193,17 @@ mysqli_close($conn);
                     <p><strong>อีเมล:</strong> <?php echo $user['email']; ?></p>
                     <p><strong>ที่อยู่:</strong> <?php echo $user['address']; ?></p>
                 </div>
+                <?php if ($user['status'] == 1): // แพทย์ 
+                ?>
+                    <a href="index.php" class="btn btn-secondary mt-4">ย้อนกลับ</a>
+                <?php elseif ($user['status'] == 2): // แอดมิน 
+                ?>
+                    <a href="index_admin.php" class="btn btn-secondary mt-4">ย้อนกลับ</a>
+                <?php elseif ($user['status'] == 3): // หมอ 
+                ?>
+                    <a href="index_doctor.php" class="btn btn-secondary mt-4">ย้อนกลับ</a>
+                <?php endif; ?>
 
-                <a href="index.php" class="btn btn-secondary mt-4">ย้อนกลับ</a>
             </div>
         </div>
     </section>

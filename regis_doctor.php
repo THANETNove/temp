@@ -86,10 +86,7 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
                     <li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#portfolio">AdviCe</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#about">About food</a></li>
-                    <li class="nav-item"></li>
-                    <li class="nav-item"><a class="nav-link" href="#contact">Register</a></li>
+                    <li class="nav-item"><a class="nav-link" href="login.php">Login</a></li>
                 </ul>
             </div>
         </div>
@@ -104,7 +101,7 @@
                 <h3 class="section-subheading text-muted ">Personal Information</h3>
             </div>
             <div class="text-center  mb-4">
-                <a href="regis_physician.php" class="btn btn-outline-primary mx-2">Physician</a>
+                <a href="regis_patient.php" class="btn btn-outline-primary mx-2">patient</a>
                 <a href="regis_admin.php" class="btn btn-outline-success mx-2">Admin</a>
                 <a href="regis_doctor.php" class="btn btn-outline-info mx-2">Doctor</a>
             </div>

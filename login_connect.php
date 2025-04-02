@@ -23,7 +23,15 @@ if ($row = mysqli_fetch_assoc($result)) {
 
     // ไปหน้าหลักหรือ dashboard
     //echo 'เข้าสู่ระบบสำเร็จ';
-    header("Location: index.php");
+
+    if ($row['status'] == 1) {
+        header("Location: index.php");
+    } elseif ($row['status'] == 2) {
+        header("Location: index_admin.php");
+    } elseif ($row['status'] == 3) {
+        header("Location: index_doctor.php");
+    }
+
     exit();
 } else {
     // ล้มเหลว กลับไปหน้า login พร้อม error

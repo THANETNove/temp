@@ -158,6 +158,7 @@
                     <li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="#portfolio">Advice</a></li>
                     <li class="nav-item"><a class="nav-link" href="#about">About food</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#page-top">Login</a></li>
                     <li class="nav-item"><a class="nav-link" href="regis_physician.php">register</a></li>
                 </ul>
             </div>

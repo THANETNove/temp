@@ -3669,9 +3669,7 @@ textarea.form-control-lg {
   border-color: transparent;
 }
 
-.nav-item:active {
-color: #ffc800;
-}
+
 .nav-tabs .nav-link.active,
 .nav-tabs .nav-item.show .nav-link {
   color: var(--bs-nav-tabs-link-active-color);

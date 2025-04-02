@@ -153,7 +153,7 @@ mysqli_close($conn);
                     <li class="nav-item"><a class="nav-link" href="#">Advice</a></li>
                     <li class="nav-item"><a class="nav-link" href="#about">Food</a></li>
                     <li class="nav-item active"><a class="nav-link" href="#portfolio">Patient</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#team">Doctor</a></li>
+                    <li class="nav-item"><a class="nav-link" href="doctor.php">Doctor</a></li>
                     <!-- <li class="nav-item"><a class="nav-link" href="#contact">Advise for patient</a></li> -->
                     <?php if (!isset($_SESSION['user_id'])): ?>
                         <li class="nav-item"><a class="nav-link" href="login.php">Login</a></li>

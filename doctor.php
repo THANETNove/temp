@@ -116,21 +116,20 @@
 </head>
 
 <body id="page-top">
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+    <nav class="navbar navbar-expand-lg fixed-top navbar-shrink-dark" id="mainNav">
         <div class="container">
-            <a class="navbar-brand" href="#page-top"><img src="img/fine.svg" alt="..." /></a>
+            <a class="navbar-brand" href="index_admin.php"><img src="img/fine.svg" alt="..." width="160" height="1600" /></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 Menu
-                <i class="fas fa-bars ms-1"></i>
-            </button>
+                <i class="fas fa-bars ms-1"></i></button>
             <?php session_start(); ?>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                    <li class="nav-item"><a class="nav-link" href="#services">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#portfolio">Advice</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index_admin.php">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Advice</a></li>
                     <li class="nav-item"><a class="nav-link" href="#about">Food</a></li>
                     <li class="nav-item"><a class="nav-link" href="patient.php">Patient</a></li>
-                    <li class="nav-item"><a class="nav-link" href="doctor.php">Doctor</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#portfolio">Doctor</a></li>
                     <!-- <li class="nav-item"><a class="nav-link" href="#contact">Advise for patient</a></li> -->
                     <?php if (!isset($_SESSION['user_id'])): ?>
                         <li class="nav-item"><a class="nav-link" href="login.php">Login</a></li>

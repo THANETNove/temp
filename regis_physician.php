@@ -108,6 +108,7 @@
                 <a href="regis_admin.php" class="btn btn-outline-success mx-2">Admin</a>
                 <a href="regis_doctor.php" class="btn btn-outline-info mx-2">Doctor</a>
             </div>
+            <div class="left-image"></div>
 
             <div class="form-section">
                 <form action="insert.php" method="POST">

@@ -172,7 +172,7 @@
             <!-- Form section -->
             <div class="form-section">
                 <h2>LOGIN</h2>
-                <form action="insert.php" method="POST">
+                <form action="login_connect.php" method="POST">
                     <div class="form-group">
                         <input class="form-control" type="email" name="email" placeholder="อีเมล" required>
                     </div>

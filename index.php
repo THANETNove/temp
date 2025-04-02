@@ -106,7 +106,10 @@
         <div class="container">
             <div class="masthead-subheading">"Welcome to our website"</div>
             <div class="masthead-heading text-uppercase">Adviser for diabetics </div>
-            <a class="btn btn-primary btn-xl text-uppercase" href="login.php">Sign in</a>
+            <?php if (!isset($_SESSION['user_id'])): ?>
+                <a class="btn btn-primary btn-xl text-uppercase" href="login.php">Sign in</a>
+            <?php endif; ?>
+
 
         </div>
     </header>

@@ -103,8 +103,14 @@
                 <h2 class="section-heading text-uppercase">Register</h2>
                 <h3 class="section-subheading text-muted ">Personal Information</h3>
             </div>
+            <div class="text-center  mb-4">
+                <a href="regis_physician.php" class="btn btn-outline-primary mx-2">Physician</a>
+                <a href="regis_admin.php" class="btn btn-outline-success mx-2">Admin</a>
+                <a href="regis_doctor.php" class="btn btn-outline-info mx-2">Doctor</a>
+            </div>
             <div class="form-section">
                 <form>
+                    <h3 class="mb-4">Admin</h3>
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <input class="form-control" type="text" placeholder="ชื่อ-สกุล" required>

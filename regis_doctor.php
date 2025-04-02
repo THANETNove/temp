@@ -138,8 +138,13 @@
                         <div class="col-md-12 mb-3">
                             <textarea class="form-control" name="address" placeholder="ที่อยู่" rows="2" required></textarea>
                         </div>
-
-                        <input type="hidden" name="status" value="1"> <!-- default: 1 -->
+                        <div class="col-md-12 mb-3">
+                            <input class="form-control" type="email" name="email" placeholder="อีเมล" required>
+                        </div>
+                        <div class="col-md-12 mb-3">
+                            <input class="form-control" type="password" name="password" placeholder="Password" required>
+                        </div>
+                        <input type="hidden" name="status" value="3"> <!-- default: 1 -->
                         <div class="text-center">
                             <button class="btn btn-primary btn-xl text-uppercase" type="submit">สมัครสมาชิก</button>
                         </div>

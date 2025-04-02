@@ -141,7 +141,10 @@
                         <div class="col-md-12 mb-3">
                             <input class="form-control" type="email" name="email" placeholder="อีเมล" required>
                         </div>
-                        <input type="hidden" name="status" value="1"> <!-- default: 1 -->
+                        <div class="col-md-12 mb-3">
+                            <input class="form-control" type="password" name="password" placeholder="Password" required>
+                        </div>
+                        <input type="hidden" name="status" value="2"> <!-- default: 1 -->
                         <div class="text-center">
                             <button class="btn btn-primary btn-xl text-uppercase" type="submit">สมัครสมาชิก</button>
                         </div>

@@ -89,7 +89,7 @@
                     <li class="nav-item"><a class="nav-link" href="#portfolio">AdviCe</a></li>
                     <li class="nav-item"><a class="nav-link" href="#about">About food</a></li>
                     <li class="nav-item"></li>
-                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Register</a></li>
                 </ul>
             </div>
         </div>

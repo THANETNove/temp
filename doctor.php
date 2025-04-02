@@ -4,7 +4,7 @@ require 'connect_db.php';
 /* session_start();
  */
 
-$sql = "SELECT * FROM users /* WHERE status = 1 */";
+$sql = "SELECT * FROM users WHERE status = 3";
 $result = mysqli_query($conn, $sql);
 
 if ($result) {
@@ -135,6 +135,14 @@ mysqli_close($conn);
         .btn-primary:hover {
             background-color: #d95f1e;
             border-color: #d95f1e;
+        }
+
+        .form-control {
+            text-align: right;
+        }
+
+        strong {
+            text-align: left;
         }
     </style>
 </head>
@@ -279,31 +287,14 @@ mysqli_close($conn);
                                                                 <span id="display-license-<?php echo $user['id']; ?>"><?php echo $user['license']; ?></span>
                                                                 <input type="text" name="license" class="form-control  d-none" id="edit-license-<?php echo $user['id']; ?>" value="<?php echo $user['license']; ?>">
                                                             </li>
-                                                            <li>
-                                                                <strong class="col-6">น้ำหนัก (kg):</strong>
-                                                                <span id="display-weight-<?php echo $user['id']; ?>"><?php echo $user['weight']; ?></span>
-                                                                <input type="number" name="weight" class="form-control d-none" id="edit-weight-<?php echo $user['id']; ?>" value="<?php echo $user['weight']; ?>">
-                                                            </li>
-                                                            <li>
-                                                                <strong class="col-6">ส่วนสูง (cm):</strong>
-                                                                <span id="display-height-<?php echo $user['id']; ?>"><?php echo $user['height']; ?></span>
-                                                                <input type="number" name="height" class="form-control d-none" id="edit-height-<?php echo $user['id']; ?>" value="<?php echo $user['height']; ?>">
-                                                            </li>
-                                                            <li>
-                                                                <strong class="col-6">ประวัติแพ้ยา:</strong>
-                                                                <span id="display-allergy-<?php echo $user['id']; ?>"><?php echo $user['allergy']; ?></span>
-                                                                <textarea name="allergy" class="form-control d-none" id="edit-allergy-<?php echo $user['id']; ?>"><?php echo $user['allergy']; ?></textarea>
-                                                            </li>
-                                                            <li>
-                                                                <strong class="col-6">โรคประจำตัว:</strong>
-                                                                <span id="display-disease-<?php echo $user['id']; ?>"><?php echo $user['chronic_disease']; ?></span>
-                                                                <textarea name="chronic_disease" class="form-control d-none" id="edit-disease-<?php echo $user['id']; ?>"><?php echo $user['chronic_disease']; ?></textarea>
-                                                            </li>
+
                                                             <li>
                                                                 <strong class="col-6">ที่อยู่:</strong>
                                                                 <span id="display-address-<?php echo $user['id']; ?>"><?php echo $user['address']; ?></span>
                                                                 <textarea name="address" class="form-control d-none" id="edit-address-<?php echo $user['id']; ?>"><?php echo $user['address']; ?></textarea>
                                                             </li>
+
+                                                            <input type="hidden" name="status" value="3"> <!-- default: 1 -->
                                                         </ul>
 
                                                         <!-- ปุ่มบันทึก -->
@@ -337,13 +328,46 @@ mysqli_close($conn);
             </div>
         </div>
     </section>
+    <!-- 
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <input class="form-control" type="text" name="name_lastname" placeholder="ชื่อ-สกุล" required>
+        </div>
+        <div class="col-md-6 mb-3">
+            <input class="form-control" type="text" name="license" placeholder="เลขบัตรประจำตัวประชาชน" required>
+        </div>
+        <div class="col-md-6 mb-3">
+            <input class="form-control" type="date" name="date" placeholder="วัน/เดือน/ปีเกิด" required>
+        </div>
+        <div class="col-md-6 mb-3">
+            <select class="form-control" name="gender" required>
+                <option value="">เพศ</option>
+                <option value="ชาย">ชาย</option>
+                <option value="หญิง">หญิง</option>
+                <option value="อื่น ๆ">อื่น ๆ</option>
+            </select>
+        </div>
+        <div class="col-md-4 mb-3">
+            <input class="form-control" type="number" name="age" placeholder="อายุ" required>
+        </div>
+        <div class="col-md-8 mb-3">
+            <input class="form-control" type="number" name="medical" placeholder="เลขที่ใบประกอบวิชาชีพ" required>
+        </div>
+        <div class="col-md-12 mb-3">
+            <textarea class="form-control" name="address" placeholder="ที่อยู่" rows="2" required></textarea>
+        </div>
+        <div class="col-md-12 mb-3">
+            <input class="form-control" type="email" name="email" placeholder="อีเมล" required>
+        </div> -->
 
     <script>
+        const fields = ["email", "name", "age", "gender", "license", "address"];
+
         function toggleEdit(userId) {
             document.getElementById("edit-btn-" + userId).classList.add("d-none"); // ซ่อนปุ่มแก้ไข
             document.getElementById("save-btn-" + userId).classList.remove("d-none"); // แสดงปุ่มบันทึก
             document.getElementById("close-edit-" + userId).classList.remove("d-none"); // ซ่อนปุ่มบันทึก
-            let fields = ["email", "name", "age", "gender", "license", "weight", "height", "allergy", "disease", "address"];
+
             fields.forEach(field => {
                 document.getElementById("display-" + field + "-" + userId).classList.add("d-none"); // ซ่อนค่าเดิม
                 document.getElementById("edit-" + field + "-" + userId).classList.remove("d-none"); // แสดง input
@@ -356,8 +380,7 @@ mysqli_close($conn);
         }
 
         function closeEdit(userId) {
-            // ซ่อน input fields
-            let fields = ["email", "name", "age", "gender", "license", "weight", "height", "allergy", "disease", "address"];
+
             fields.forEach(field => {
                 document.getElementById("edit-" + field + "-" + userId).classList.add("d-none"); // ซ่อน input
                 document.getElementById("display-" + field + "-" + userId).classList.remove("d-none"); // แสดงค่าดั้งเดิม

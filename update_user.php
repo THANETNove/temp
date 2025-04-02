@@ -16,6 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $tel = $_POST['tel']; //
     $medical = $_POST['medical']; //
     $license = $_POST['license'];
+    $status = $_POST['status'];
 
     $sql = "UPDATE users SET 
                 name_lastname = '$name_lastname',
@@ -33,7 +34,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             WHERE id = '$user_id'";
 
     if (mysqli_query($conn, $sql)) {
-        header("Location: patient.php");
+        if ($status == 1) {
+            header("Location: patient.php");
+        } elseif ($status == 2) {
+            /*  header("Location: index_admin.php"); */
+        } elseif ($status == 3) {
+            header("Location: doctor.php");
+        }
     } else {
         /*  echo "Error: " . mysqli_error($conn); */
     }

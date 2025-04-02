@@ -291,6 +291,7 @@ mysqli_close($conn);
                                                                 <span id="display-address-<?php echo $user['id']; ?>"><?php echo $user['address']; ?></span>
                                                                 <textarea name="address" class="form-control d-none" id="edit-address-<?php echo $user['id']; ?>"><?php echo $user['address']; ?></textarea>
                                                             </li>
+                                                            <input type="hidden" name="status" value="1"> <!-- default: 1 -->
                                                         </ul>
 
                                                         <!-- ปุ่มบันทึก -->
@@ -326,11 +327,12 @@ mysqli_close($conn);
     </section>
 
     <script>
+        const fields = ["email", "name", "age", "gender", "license", "weight", "height", "allergy", "disease", "address"];
+
         function toggleEdit(userId) {
             document.getElementById("edit-btn-" + userId).classList.add("d-none"); // ซ่อนปุ่มแก้ไข
             document.getElementById("save-btn-" + userId).classList.remove("d-none"); // แสดงปุ่มบันทึก
             document.getElementById("close-edit-" + userId).classList.remove("d-none"); // ซ่อนปุ่มบันทึก
-            let fields = ["email", "name", "age", "gender", "license", "weight", "height", "allergy", "disease", "address"];
             fields.forEach(field => {
                 document.getElementById("display-" + field + "-" + userId).classList.add("d-none"); // ซ่อนค่าเดิม
                 document.getElementById("edit-" + field + "-" + userId).classList.remove("d-none"); // แสดง input
@@ -344,7 +346,7 @@ mysqli_close($conn);
 
         function closeEdit(userId) {
             // ซ่อน input fields
-            let fields = ["email", "name", "age", "gender", "license", "weight", "height", "allergy", "disease", "address"];
+
             fields.forEach(field => {
                 document.getElementById("edit-" + field + "-" + userId).classList.add("d-none"); // ซ่อน input
                 document.getElementById("display-" + field + "-" + userId).classList.remove("d-none"); // แสดงค่าดั้งเดิม

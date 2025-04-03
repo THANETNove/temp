@@ -1,3 +1,23 @@
+<?php
+require 'connect_db.php';
+session_start();
+
+$user_id = $_SESSION['user_id'];
+$sql = "SELECT * FROM users WHERE id = $user_id LIMIT 1";
+$result = mysqli_query($conn, $sql);
+$user = mysqli_fetch_assoc($result);
+mysqli_close($conn);
+
+if ($user['status'] == '2') {
+    header("Location: index_admin.php");
+    exit(); // หยุดการทำงานของ script
+} elseif ($user['status'] == '3') {
+    header("Location: index_doctor.php");
+    exit();
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 

@@ -55,7 +55,7 @@
                 <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
                     <li class="nav-item"><a class="nav-link" href="#services">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="#portfolio">Advice</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#about">Food</a></li>
+                    <li class="nav-item"><a class="nav-link" href="add_food.php">Food</a></li>
                     <li class="nav-item"><a class="nav-link" href="patient.php">Patient</a></li>
                     <li class="nav-item"><a class="nav-link" href="doctor.php">Doctor</a></li>
                     <!-- <li class="nav-item"><a class="nav-link" href="#contact">Advise for patient</a></li> -->

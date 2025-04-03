@@ -158,10 +158,12 @@ mysqli_close($conn);
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
                     <li class="nav-item"><a class="nav-link" href="index_admin.php">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Advice</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#about">Food</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#advice">Advice</a></li>
+                    <li class="nav-item"><a class="nav-link" href="add_food.php">Food</a></li>
                     <li class="nav-item"><a class="nav-link" href="patient.php">Patient</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#portfolio">Doctor</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="doctor.php">Doctor</a></li>
+
+
                     <!-- <li class="nav-item"><a class="nav-link" href="#contact">Advise for patient</a></li> -->
                     <?php if (!isset($_SESSION['user_id'])): ?>
                         <li class="nav-item"><a class="nav-link" href="login.php">Login</a></li>

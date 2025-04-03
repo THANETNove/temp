@@ -79,83 +79,65 @@
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
         <div class="container">
-            <a class="navbar-brand" href="index.php"><img src="assets/img/navbar-logo.svg" alt="..." width="160" height="1600" /></a>
+            <a class="navbar-brand" href="#page-top"><img src="img/fine.svg" alt="..." width="160" height="1600" /></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 Menu
                 <i class="fas fa-bars ms-1"></i></button>
+            <?php session_start(); ?>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                    <li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="login.php">Login</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#services">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#portfolio">Advice</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="add_food.php">Food</a></li>
+                    <li class="nav-item"><a class="nav-link" href="patient.php">Patient</a></li>
+                    <li class="nav-item"><a class="nav-link" href="doctor.php">Doctor</a></li>
+                    <!-- <li class="nav-item"><a class="nav-link" href="#contact">Advise for patient</a></li> -->
+                    <?php if (!isset($_SESSION['user_id'])): ?>
+                        <li class="nav-item"><a class="nav-link" href="login.php">Login</a></li>
+                        <li class="nav-item"><a class="nav-link" href="regis_patient.php">Register</a></li>
+                    <?php else: ?>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-capitalize" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                สวัสดีคุณ <?php echo $_SESSION['user_name']; ?>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                                <li><a class="dropdown-item" href="profile.php">โปรไฟล์</a></li>
+                                <li><a class="dropdown-item" href="logout.php">ออกจากระบบ</a></li>
+                            </ul>
+                        </li>
 
+
+                    <?php endif; ?>
                 </ul>
             </div>
         </div>
     </nav>
 
-
     <!-- Contact-->
     <section class="page-section" id="contact">
         <div class="container">
             <div class="text-center">
-                <h2 class="section-heading text-uppercase">Register</h2>
-                <h3 class="section-subheading text-muted ">Personal Information</h3>
+                <h2 class="section-heading text-uppercase">Menu</h2>
+
             </div>
-            <div class="text-center  mb-4">
-                <a href="regis_patient.php" class="btn btn-outline-primary mx-2">patient</a>
-                <a href="regis_admin.php" class="btn btn-outline-success mx-2">Admin</a>
-                <a href="regis_doctor.php" class="btn btn-outline-info mx-2">Doctor</a>
-            </div>
-            <div class="left-image"></div>
+
 
             <div class="form-section">
-                <form action="insert.php" method="POST">
-                    <h3 class="mb-4">ผู้ป่วย</h3>
+                <form action="insert_food.php" method="POST" enctype="multipart/form-data">
+                    <h3 class="mb-4">เมนูอาหาร</h3>
                     <div class="row">
-                        <div class="col-md-6 mb-3">
-                            <input class="form-control" type="text" name="name_lastname" placeholder="ชื่อ-สกุล" required>
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <input class="form-control" type="text" name="license" placeholder="เลขบัตรประจำตัวประชาชน" required>
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <input class="form-control" type="date" name="date" placeholder="วัน/เดือน/ปีเกิด" required>
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <select class="form-control" name="gender" required>
-                                <option value="">เพศ</option>
-                                <option value="ชาย">ชาย</option>
-                                <option value="หญิง">หญิง</option>
-                                <option value="อื่น ๆ">อื่น ๆ</option>
-                            </select>
-                        </div>
-                        <div class="col-md-4 mb-3">
-                            <input class="form-control" type="number" name="age" placeholder="อายุ" required>
-                        </div>
-                        <div class="col-md-4 mb-3">
-                            <input class="form-control" type="text" name="weight" placeholder="น้ำหนัก (kg)" required>
-                        </div>
-                        <div class="col-md-4 mb-3">
-                            <input class="form-control" type="text" name="height" placeholder="ส่วนสูง (cm)" required>
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <input class="form-control" type="text" name="allergy" placeholder="ประวัติแพ้ยา" required>
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <input class="form-control" type="text" name="chronic_disease" placeholder="โรคประจำตัว">
+                        <div class="col-md-12 mb-3">
+                            <input class="form-control" type="text" name="name" placeholder="ชื่อเมนู" required>
                         </div>
                         <div class="col-md-12 mb-3">
-                            <textarea class="form-control" name="address" placeholder="ที่อยู่" rows="2" required></textarea>
+                            <textarea class="form-control" name="details" placeholder="รายละเอียด" rows="2" required></textarea>
                         </div>
                         <div class="col-md-12 mb-3">
-                            <input class="form-control" type="email" name="email" placeholder="อีเมล" required>
+                            <input class="form-control" type="file" name="image" placeholder="ภาพ" accept="image/*" required>
                         </div>
-                        <div class="col-md-12 mb-3">
-                            <input class="form-control" type="password" name="password" placeholder="Password" required>
-                        </div>
-                        <input type="hidden" name="status" value="1"> <!-- default: 1 -->
+
                         <div class="text-center">
-                            <button class="btn btn-primary btn-xl text-uppercase" type="submit">สมัครสมาชิก</button>
+                            <button class="btn btn-primary btn-xl text-uppercase" type="submit">บันทึก</button>
                         </div>
                     </div>
                 </form>

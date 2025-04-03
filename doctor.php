@@ -213,10 +213,11 @@ mysqli_close($conn);
                         }
 
                         // ดึงรูปภาพจาก index ปัจจุบัน
-                        $imageNumber = $images[$_SESSION['image_index']];
+                        $imageNumber = $images[$user['id'] % count($images)];
+
 
                         // อัปเดต index ให้เลื่อนไปตัวถัดไป (วนลูปกลับเมื่อถึงตัวสุดท้าย)
-                        $_SESSION['image_index'] = ($_SESSION['image_index'] + 1) % count($images);
+                        $_SESSION['image_index'] = ($_SESSION['image_index']) % count($images);
                 ?>
                         <div class="col-lg-4 col-sm-6 mb-4">
                             <div class="portfolio-item">

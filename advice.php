@@ -17,91 +17,91 @@
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="css/styles.css" rel="stylesheet" />
     <style type="text/css">
-        body,
-        td,
-        th {
-            color: #43D0C7;
-        }
+    body,
+    td,
+    th {
+        color: #43D0C7;
+    }
 
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
-            font-family: Montserrat, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-        }
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-family: Montserrat, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    }
 
-        h1 {
-            font-size: large;
-        }
+    h1 {
+        font-size: large;
+    }
 
-        h2 {
-            font-size: large;
-        }
+    h2 {
+        font-size: large;
+    }
 
-        .form-control:focus {
+    .form-control:focus {
 
-            border-color: #43D0C7;
-            box-shadow: 0 0 0 0.25rem rgba(67, 208, 199, 0.25);
-        }
+        border-color: #43D0C7;
+        box-shadow: 0 0 0 0.25rem rgba(67, 208, 199, 0.25);
+    }
 
-        .btn-primary {
-            background-color: #43D0C7;
-            border-color: #43D0C7;
-        }
+    .btn-primary {
+        background-color: #43D0C7;
+        border-color: #43D0C7;
+    }
 
-        .btn-primary:hover {
-            background-color: #2bb5ac;
-            border-color: #2bb5ac;
-        }
+    .btn-primary:hover {
+        background-color: #2bb5ac;
+        border-color: #2bb5ac;
+    }
 
-        .form-section {
-            width: 100%;
-            display: flex;
-            justify-content: center;
+    .form-section {
+        width: 100%;
+        display: flex;
+        justify-content: center;
 
-            /* ให้มีความสูงเต็มหน้าจอ */
-        }
+        /* ให้มีความสูงเต็มหน้าจอ */
+    }
 
-        .page-section form {
-            width: 70%;
-            max-width: 800px;
-            background: #ffffff;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-        }
+    .page-section form {
+        width: 70%;
+        max-width: 800px;
+        background: #ffffff;
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    }
 
 
-        .food-section {
-            width: 100%;
-            display: flex;
-            padding: 3rem;
-            justify-content: center;
-        }
+    .food-section {
+        width: 100%;
+        display: flex;
+        padding: 3rem;
+        justify-content: center;
+    }
 
-        table.shsovp {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-            font-size: 16px;
-            font-family: 'Sarabun', sans-serif;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
+    table.shsovp {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        font-size: 16px;
+        font-family: 'Sarabun', sans-serif;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
 
-        table.shsovp th,
-        table.shsovp td {
-            border: 1px solid #ddd;
-            padding: 12px 15px;
-            text-align: left;
-        }
+    table.shsovp th,
+    table.shsovp td {
+        border: 1px solid #ddd;
+        padding: 12px 15px;
+        text-align: left;
+    }
 
-        .action-buttons {
-            display: flex;
-            flex-direction: column;
-            align-items: stretch;
-        }
+    .action-buttons {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+    }
     </style>
 </head>
 
@@ -133,11 +133,20 @@
 
             <div class="form-section">
                 <form action="insert_Advice.php" method="POST" enctype="multipart/form-data">
-                    <?php if (isset($_GET['success']) && $_GET['success'] == 1): ?>
-                        <div
-                            style="padding:10px; background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; margin-bottom: 10px;">
-                            ✅ บันทึกข้อมูลเรียบร้อยแล้ว
-                        </div>
+                    <?php if (isset($_GET['success'])): ?>
+                    <?php if ($_GET['success'] == 1): ?>
+                    <div
+                        style="padding:10px; background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; margin-bottom: 10px;">
+                        ✅ บันทึกข้อมูลเรียบร้อยแล้ว
+                    </div>
+                    <?php elseif ($_GET['success'] == 2): ?>
+                    <div
+                        style="padding:10px; background-color: #d1ecf1; color: #0c5460; border: 1px solid #bee5eb; margin-bottom: 10px;">
+                        ✏️ แก้ไขข้อมูลเรียบร้อยแล้ว
+                    </div>
+                    <?php elseif ($_GET['success'] == 3): ?>
+                    <div class="alert alert-danger">🗑️ ลบข้อมูลและรูปภาพเรียบร้อยแล้ว</div>
+                    <?php endif; ?>
                     <?php endif; ?>
                     <h3 class="mb-4">Advice</h3>
                     <div class="row">
@@ -183,13 +192,19 @@
                 <th>แก้ไข</th>
             </tr>
             <?php while ($row = mysqli_fetch_assoc($result)): ?>
-                <tr>
-                    <td><?= $index++ ?></td>
-                    <td><?= $row['name'] ?></td>
-                    <td><?= $row['details'] ?></td>
-                    <td><img src="assets/img/uploads/food/<?= $row['image'] ?>" width="150"></td>
-                    <td><a href="update_food?id=<?= $row['id'] ?>">แก้ไข</a></td>
-                </tr>
+            <tr>
+                <td><?= $index++ ?></td>
+                <td><?= $row['name'] ?></td>
+                <td><?= $row['details'] ?></td>
+                <td><img src="assets/img/uploads/advice/<?= $row['image'] ?>" width="150"></td>
+                <td>
+                    <div class="action-buttons">
+                        <a href="advice_edit.php?id=<?= $row['id'] ?>" class="btn btn-primary mb-2 w-100">แก้ไข</a>
+                        <a href="delete_advice.php?id=<?= $row['id'] ?>" class="btn btn-danger w-100"
+                            onclick="return confirm('⚠️ คุณแน่ใจหรือไม่ว่าต้องการลบรายการนี้?')">ลบ</a>
+                    </div>
+                </td>
+            </tr>
             <?php endwhile; ?>
         </table>
 

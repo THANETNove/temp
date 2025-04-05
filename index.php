@@ -82,14 +82,6 @@ if (isset($_SESSION['user_id'])) {
         .navbar .nav-username:hover {
             background-color: rgba(30, 191, 192, 0.2);
         }
-
-        header.masthead .masthead-subheading {
-            font-size: 2.25rem;
-            font-style: italic;
-            line-height: 2.25rem;
-            margin-bottom: 2rem;
-            padding-top: 8rem !important;
-        }
     </style>
 </head>
 
@@ -273,6 +265,88 @@ if (isset($_SESSION['user_id'])) {
                     </div>
                 </li>
             </ul>
+        </div>
+    </section>
+    <section class="page-section" id="question">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-heading text-uppercase">คำถาม-คำตอบ</h2>
+                <h3 class="section-subheading text-muted">คำถามที่พบบ่อยและคำตอบจากผู้เชี่ยวชาญสำหรับผู้ป่วยเบาหวาน</h3>
+                <?php
+
+                require 'connect_db.php';
+
+                if (!isset($_SESSION['user_id'])) {
+                    echo "<div style='padding: 20px; color: red;'>กรุณาเข้าสู่ระบบก่อนดูคำถามของคุณ</div>";
+                    exit;
+                }
+
+                $user_id = $_SESSION['user_id'];
+                $sql = "SELECT 
+                    ap.*,
+                    u.name_lastname AS name_lastname
+                    FROM advice_problems ap
+                    LEFT JOIN users u ON ap.user_id = u.id
+                    WHERE ap.user_id = $user_id
+                    ORDER BY ap.answered_at DESC";
+
+
+                $resultQuestion = mysqli_query($conn, $sql);
+                $i = 1;
+                ?>
+            </div>
+            <div class="container">
+                <h2 class="text-uppercase mb-3">📋 ประวัติคำถามของคุณ</h2>
+
+                <?php if (mysqli_num_rows($result) > 0): ?>
+                    <table class="table table-bordered table-striped">
+                        <thead class="table-light">
+                            <tr>
+                                <th>ลำดับ</th>
+                                <th>คำถาม</th>
+                                <th>คำตอบจากแพทย์</th>
+                                <th>สถานะ</th>
+                                <th>วันที่ถาม</th>
+                                <th>วันที่ตอบ</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php while ($row = mysqli_fetch_assoc($resultQuestion)): ?>
+                                <tr>
+
+                                    <td><?= $i++ ?></td>
+                                    <td><?= nl2br(htmlspecialchars($row['problem_text'])) ?></td>
+                                    <td>
+                                        <?php if ($row['answer_text']): ?>
+                                            <?= nl2br(htmlspecialchars($row['answer_text'])) ?>
+                                        <?php else: ?>
+                                            <span class="text-muted">⏳ ยังไม่มีคำตอบ</span>
+                                        <?php endif; ?>
+                                    </td>
+                                    <td>
+                                        <?php if ($row['answer_text']): ?>
+                                            <span class="badge bg-success">ตอบแล้ว</span>
+                                        <?php else: ?>
+                                            <span class="badge bg-warning text-dark">รอตอบ</span>
+                                        <?php endif; ?>
+                                    </td>
+                                    <td><?= date("d/m/Y H:i", strtotime($row['created_at'])) ?></td>
+                                    <td>
+                                        <?php if (!is_null($row['answered_at'])): ?>
+                                            <?= date("d/m/Y H:i", strtotime($row['answered_at'])) ?>
+                                        <?php else: ?>
+                                            <span class="badge bg-warning text-dark">รอ update</span>
+                                        <?php endif; ?>
+                                    </td>
+                                </tr>
+                            <?php endwhile; ?>
+                        </tbody>
+                    </table>
+                <?php else: ?>
+                    <div class="alert alert-info">คุณยังไม่ได้ส่งคำถามใด ๆ</div>
+                <?php endif; ?>
+            </div>
+
         </div>
     </section>
 

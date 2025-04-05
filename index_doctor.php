@@ -17,43 +17,64 @@
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="css/styles.css" rel="stylesheet" />
     <style type="text/css">
-    body,
-    td,
-    th {
-        color: #43D0C7;
-    }
+        body,
+        td,
+        th {
+            color: #43D0C7;
+        }
 
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-        font-family: Montserrat, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-    }
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: Montserrat, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+        }
 
-    h1 {
-        font-size: large;
-    }
+        h1 {
+            font-size: large;
+        }
 
-    h2 {
-        font-size: large;
-    }
+        h2 {
+            font-size: large;
+        }
 
-    header.masthead .masthead-subheading {
-        font-size: 2.25rem;
-        font-style: italic;
-        line-height: 2.25rem;
-        margin-bottom: 2rem;
-        padding-top: 8rem !important;
-    }
+        header.masthead .masthead-subheading {
+            font-size: 2.25rem;
+            font-style: italic;
+            line-height: 2.25rem;
+            margin-bottom: 2rem;
+            padding-top: 8rem !important;
+        }
     </style>
 </head>
 
 <body id="page-top">
     <!-- Navigation-->
 
+
+
     <?php include('navber_doctor.php'); ?>
+    <?php
+
+    require 'connect_db.php';
+
+    // ตรวจสอบว่าเข้าสู่ระบบด้วย role แพทย์หรือไม่ (optional)
+    // if (!isset($_SESSION['doctor_id'])) { exit("เฉพาะแพทย์เท่านั้น"); }
+
+
+    $sql = "SELECT 
+            ap.*,
+            u.name_lastname AS name_lastname
+                FROM advice_problems ap
+                LEFT JOIN users u ON ap.user_id = u.id
+                WHERE ap.answer_text IS NULL
+                ORDER BY ap.created_at DESC";
+
+
+    $resultQ = mysqli_query($conn, $sql);
+    ?>
 
     <!-- Masthead-->
     <header class="masthead">
@@ -65,356 +86,68 @@
         </div>
     </header>
     <!-- Services-->
-    <section class="page-section" id="services"></section>
-    <!-- Portfolio Grid-->
-    <section class="page-section bg-light" id="portfolio"></section>
-    <!-- About-->
-    <section class="page-section" id="about"></section>
-    <!-- Team-->
-    <!-- Clients-->
-    <div class="py-5">
-        <div class="container"></div>
-    </div>
-    <!-- Contact-->
-    <p>&nbsp;</p>
-    <form id="form1" name="form1" method="post" action="user_add.php">
-        <section class="page-section" id="contact">
-            <div class="container">
-                <div class="text-center">
-                    <h2 class="section-heading text-uppercase">Register</h2>
-                    <h3 class="section-subheading text-muted">Personal Information.</h3>
-                    <p><span class="section-subheading text-muted"><span class="form-group">
-                                <input class="form-control" id="text" type="text" placeholder="ชื่อ-สกุล"
-                                    data-sb-validations="required," />
-                            </span></span></p>
-                    <p><span class="form-group">
-                            <input class="form-control" id="number" type="number" placeholder="เลขบัตรประจำตัวประชาชน "
-                                data-sb-validations="required," />
-                        </span></p>
-                    <p><span class="form-group">
-                            <input class="form-control" id="number" type="number" placeholder="วัน/เดือน/ปีเกิด "
-                                data-sb-validations="required,text" />
-                        </span></p>
-                </div>
-                <p><span class="form-group">
-                        <input class="form-control" id="text" type="text" placeholder="เพศ "
-                            data-sb-validations="required," />
-                    </span></p>
-                <p><span class="form-group">
-                        <input class="form-control" id="number" type="number" placeholder="อายุ"
-                            data-sb-validations="required," />
-                    </span></p>
-                <p>
-                    <input class="form-control" id="number" type="number" placeholder="เลขที่ใบประกอบวิชาชีพ"
-                        data-sb-validations="required," />
-                </p>
-                <p>
-                    <input class="form-control" id="number" type="number" placeholder="ส่วนสูง"
-                        data-sb-validations="required," />
-                </p>
-                <p>
-                    <input class="form-control" id="email2" type="email" placeholder="อีเมล"
-                        data-sb-validations="required,email" />
-                </p>
-                <p>
-                    <input class="form-control" id="text2" type="text" placeholder="ที่อยู่"
-                        data-sb-validations="required," />
-                <p>&nbsp;</p>
-                <p>&nbsp;</p>
-                <p>&nbsp;</p>
-                <p>&nbsp; </p>
-            </div>
-            <!-- Submit success message-->
-            <!---->
-            <!-- This is what your users will see when the form-->
-            <!-- has successfully submitted-->
-            <div class="d-none" id="submitSuccessMessage2">
-                <div class="text-center text-white mb-3">
-                    <div class="fw-bolder">Form submission successful!</div>
-                    To activate this form, sign up at <br />
-                    <a
-                        href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
-                </div>
-            </div>
-            </div>
-            <!-- Submit success message-->
-            <!---->
-            <!-- This is what your users will see when the form-->
-            <!-- has successfully submitted-->
-            <div class="d-none" id="submitSuccessMessage">
-                <div class="text-center text-white mb-3">
-                    <div class="fw-bolder">Form submission successful!</div>
-                    To activate this form, sign up at <br />
-                    <a
-                        href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
-                </div>
-            </div>
-            <!-- Submit error message-->
-            <!---->
-            <!-- This is what your users will see when there is-->
-            <!-- an error submitting the form-->
-            <div class="d-none" id="submitErrorMessage">
-                <div class="text-center text-danger mb-3">Error sending message!</div>
-            </div>
-            <!-- Submit Button-->
-            <div class="text-center">
-                <a class="btn btn-primary btn-xl text-uppercase" href="#page-top"> Register</a>
+    <section class="page-section" id="questions">
 
-            </div>
-            </div>
-        </section>
-        <!-- Footer-->
-        <footer class="footer py-4"></footer>
-        <!-- Portfolio Modals-->
-        <!-- Portfolio item 1 modal popup-->
-        <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg"
-                            alt="Close modal" /></div>
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-8">
-                                <div class="modal-body">
-                                    <!-- Project details-->
-                                    <h2 class="text-uppercase">Project Name</h2>
-                                    <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-                                    <img class="img-fluid d-block mx-auto" src="assets/img/portfolio/1.jpg" alt="..." />
-                                    <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur
-                                        adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos
-                                        deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores
-                                        repudiandae, nostrum, reiciendis facere nemo!</p>
-                                    <ul class="list-inline">
-                                        <li>
-                                            <strong>Client:</strong>
-                                            Threads
-                                        </li>
-                                        <li>
-                                            <strong>Category:</strong>
-                                            Illustration
-                                        </li>
-                                    </ul>
-                                    <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal"
-                                        type="button">
-                                        <i class="fas fa-xmark me-1"></i>
-                                        Close Project
-                                    </button>
-                                </div>
+        <div class="container">
+            <?php if (isset($_GET['success']) && $_GET['success'] == 1): ?>
+                <div style="
+                display: inline-block;
+                padding: 10px;
+                background-color: #d4edda;
+                color: #155724;
+                border: 1px solid #c3e6cb;
+                margin-bottom: 16px;
+                border-radius: 5px;
+                font-size: 16px;">
+                    ✅ ตอบคำถามเรียบร้อยแล้ว
+                </div>
+            <?php endif; ?>
+            <h2 class="text-uppercase mb-4">📩 คำถามจากผู้ใช้งาน</h2>
+
+            <?php while ($row = mysqli_fetch_assoc($resultQ)): ?>
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <strong>ผู้ใช้:</strong> <?= htmlspecialchars($row['name_lastname']) ?> |
+                        <strong>วันที่ส่ง:</strong> <?= date("d/m/Y H:i", strtotime($row['created_at'])) ?>
+                    </div>
+                    <div class="card-body">
+                        <p><strong>คำถาม:</strong> <?= nl2br(htmlspecialchars($row['problem_text'])) ?></p>
+
+                        <?php if ($row['answer_text']): ?>
+                            <div class="alert alert-success">
+                                <strong>คำตอบเดิม:</strong><br><?= nl2br(htmlspecialchars($row['answer_text'])) ?>
                             </div>
-                        </div>
+                        <?php else: ?>
+                            <form action="save_answer.php" method="POST">
+                                <div class="mb-3">
+                                    <label for="answer_text" class="form-label">พิมพ์คำตอบ:</label>
+                                    <textarea name="answer_text" class="form-control" rows="4" required></textarea>
+                                </div>
+                                <input type="hidden" name="problem_id" value="<?= $row['id'] ?>">
+                                <button type="submit" class="btn btn-primary">✅ ส่งคำตอบ</button>
+                            </form>
+                        <?php endif; ?>
                     </div>
                 </div>
-            </div>
+            <?php endwhile; ?>
         </div>
-        <!-- Portfolio item 2 modal popup-->
-        <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg"
-                            alt="Close modal" /></div>
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-8">
-                                <div class="modal-body">
-                                    <!-- Project details-->
-                                    <h2 class="text-uppercase">Project Name</h2>
-                                    <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-                                    <img class="img-fluid d-block mx-auto" src="assets/img/portfolio/2.jpg" alt="..." />
-                                    <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur
-                                        adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos
-                                        deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores
-                                        repudiandae, nostrum, reiciendis facere nemo!</p>
-                                    <ul class="list-inline">
-                                        <li>
-                                            <strong>Client:</strong>
-                                            Explore
-                                        </li>
-                                        <li>
-                                            <strong>Category:</strong>
-                                            Graphic Design
-                                        </li>
-                                    </ul>
-                                    <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal"
-                                        type="button">
-                                        <i class="fas fa-xmark me-1"></i>
-                                        Close Project
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Portfolio item 3 modal popup-->
-        <div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg"
-                            alt="Close modal" /></div>
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-8">
-                                <div class="modal-body">
-                                    <!-- Project details-->
-                                    <h2 class="text-uppercase">Project Name</h2>
-                                    <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-                                    <img class="img-fluid d-block mx-auto" src="assets/img/portfolio/3.jpg" alt="..." />
-                                    <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur
-                                        adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos
-                                        deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores
-                                        repudiandae, nostrum, reiciendis facere nemo!</p>
-                                    <ul class="list-inline">
-                                        <li>
-                                            <strong>Client:</strong>
-                                            Finish
-                                        </li>
-                                        <li>
-                                            <strong>Category:</strong>
-                                            Identity
-                                        </li>
-                                    </ul>
-                                    <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal"
-                                        type="button">
-                                        <i class="fas fa-xmark me-1"></i>
-                                        Close Project
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Portfolio item 4 modal popup-->
-        <div class="portfolio-modal modal fade" id="portfolioModal4" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg"
-                            alt="Close modal" /></div>
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-8">
-                                <div class="modal-body">
-                                    <!-- Project details-->
-                                    <h2 class="text-uppercase">Project Name</h2>
-                                    <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-                                    <img class="img-fluid d-block mx-auto" src="assets/img/portfolio/4.jpg" alt="..." />
-                                    <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur
-                                        adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos
-                                        deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores
-                                        repudiandae, nostrum, reiciendis facere nemo!</p>
-                                    <ul class="list-inline">
-                                        <li>
-                                            <strong>Client:</strong>
-                                            Lines
-                                        </li>
-                                        <li>
-                                            <strong>Category:</strong>
-                                            Branding
-                                        </li>
-                                    </ul>
-                                    <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal"
-                                        type="button">
-                                        <i class="fas fa-xmark me-1"></i>
-                                        Close Project
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Portfolio item 5 modal popup-->
-        <div class="portfolio-modal modal fade" id="portfolioModal5" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg"
-                            alt="Close modal" /></div>
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-8">
-                                <div class="modal-body">
-                                    <!-- Project details-->
-                                    <h2 class="text-uppercase">Project Name</h2>
-                                    <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-                                    <img class="img-fluid d-block mx-auto" src="assets/img/portfolio/5.jpg" alt="..." />
-                                    <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur
-                                        adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos
-                                        deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores
-                                        repudiandae, nostrum, reiciendis facere nemo!</p>
-                                    <ul class="list-inline">
-                                        <li>
-                                            <strong>Client:</strong>
-                                            Southwest
-                                        </li>
-                                        <li>
-                                            <strong>Category:</strong>
-                                            Website Design
-                                        </li>
-                                    </ul>
-                                    <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal"
-                                        type="button">
-                                        <i class="fas fa-xmark me-1"></i>
-                                        Close Project
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Portfolio item 6 modal popup-->
-        <div class="portfolio-modal modal fade" id="portfolioModal6" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg"
-                            alt="Close modal" /></div>
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-8">
-                                <div class="modal-body">
-                                    <!-- Project details-->
-                                    <h2 class="text-uppercase">Project Name</h2>
-                                    <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-                                    <img class="img-fluid d-block mx-auto" src="assets/img/portfolio/6.jpg" alt="..." />
-                                    <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur
-                                        adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos
-                                        deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores
-                                        repudiandae, nostrum, reiciendis facere nemo!</p>
-                                    <ul class="list-inline">
-                                        <li>
-                                            <strong>Client:</strong>
-                                            Window
-                                        </li>
-                                        <li>
-                                            <strong>Category:</strong>
-                                            Photography
-                                        </li>
-                                    </ul>
-                                    <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal"
-                                        type="button">
-                                        <i class="fas fa-xmark me-1"></i>
-                                        Close Project
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
-        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-        <!-- * *                               SB Forms JS                               * *-->
-        <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
-        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+    </section>
+    <!-- Portfolio Grid-->
+
+
+    <!-- Contact-->
+
+
+
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="js/scripts.js"></script>
+    <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+    <!-- * *                               SB Forms JS                               * *-->
+    <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+    <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+    <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
 </body>
 
 </html>

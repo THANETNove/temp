@@ -17,65 +17,103 @@
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="css/styles.css" rel="stylesheet" />
     <style type="text/css">
-    body,
-    td,
-    th {
-        color: #43D0C7;
-    }
+        body,
+        td,
+        th {
+            color: #43D0C7;
+        }
 
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-        font-family: Montserrat, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-    }
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: Montserrat, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+        }
 
-    h1 {
-        font-size: large;
-    }
+        h1 {
+            font-size: large;
+        }
 
-    h2 {
-        font-size: large;
-    }
+        h2 {
+            font-size: large;
+        }
 
-    .form-control:focus {
+        .form-control:focus {
 
-        border-color: #43D0C7;
-        box-shadow: 0 0 0 0.25rem rgba(67, 208, 199, 0.25);
-    }
+            border-color: #43D0C7;
+            box-shadow: 0 0 0 0.25rem rgba(67, 208, 199, 0.25);
+        }
 
-    .btn-primary {
-        background-color: #43D0C7;
-        border-color: #43D0C7;
-    }
+        .btn-primary {
+            background-color: #43D0C7;
+            border-color: #43D0C7;
+        }
 
-    .btn-primary:hover {
-        background-color: #2bb5ac;
-        border-color: #2bb5ac;
-    }
+        .btn-primary:hover {
+            background-color: #2bb5ac;
+            border-color: #2bb5ac;
+        }
 
-    .form-section {
-        width: 100%;
-        display: flex;
-        justify-content: center;
+        .form-section {
+            width: 100%;
+            display: flex;
+            justify-content: center;
 
-        /* ให้มีความสูงเต็มหน้าจอ */
-    }
+            /* ให้มีความสูงเต็มหน้าจอ */
+        }
 
-    .page-section form {
-        width: 70%;
-        max-width: 800px;
-        background: #ffffff;
-        padding: 2rem;
-        border-radius: 10px;
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    }
+        .page-section form {
+            width: 70%;
+            max-width: 800px;
+            background: #ffffff;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+
+        .food-section {
+            width: 100%;
+            display: flex;
+            padding: 3rem;
+            justify-content: center;
+        }
+
+        table.shsovp {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 16px;
+            font-family: 'Sarabun', sans-serif;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        table.shsovp th,
+        table.shsovp td {
+            border: 1px solid #ddd;
+            padding: 12px 15px;
+            text-align: left;
+        }
     </style>
 </head>
 
 <body id="page-top">
+    <?php
+    require 'connect_db.php';
+    // ✅ เริ่ม session ให้เรียบร้อยก่อนใช้ $_SESSION
+
+    $sql = "SELECT * FROM advice ";
+    $result = mysqli_query($conn, $sql);
+    $dbfood = mysqli_fetch_assoc($result);
+    mysqli_close($conn);
+
+
+
+
+
+    ?>
     <!-- Navigation-->
     <?php include('navber_admin.php'); ?>
     <!-- Contact-->
@@ -89,6 +127,12 @@
 
             <div class="form-section">
                 <form action="insert_Advice.php" method="POST" enctype="multipart/form-data">
+                    <?php if (isset($_GET['success']) && $_GET['success'] == 1): ?>
+                        <div
+                            style="padding:10px; background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; margin-bottom: 10px;">
+                            ✅ บันทึกข้อมูลเรียบร้อยแล้ว
+                        </div>
+                    <?php endif; ?>
                     <h3 class="mb-4">Advice</h3>
                     <div class="row">
                         <div class="col-md-12 mb-3">
@@ -112,6 +156,39 @@
             </div>
 
         </div>
+    </section>
+
+    <section class="food-section" id="contact">
+        <?php
+        require 'connect_db.php';
+
+        $sql = "SELECT * FROM advice";
+        $result = mysqli_query($conn, $sql);
+        $index = 1; // เริ่มลำดับที่ 1
+
+        ?>
+
+        <table class="shsovp">
+            <tr>
+                <th>ID</th>
+                <th>ชื่อเมนู</th>
+                <th>รายละเอียด</th>
+                <th>รูปภาพ</th>
+                <th>แก้ไข</th>
+            </tr>
+            <?php while ($row = mysqli_fetch_assoc($result)): ?>
+                <tr>
+                    <td><?= $index++ ?></td>
+                    <td><?= $row['name'] ?></td>
+                    <td><?= $row['details'] ?></td>
+                    <td><img src="assets/img/uploads/food/<?= $row['image'] ?>" width="150"></td>
+                    <td><a href="food_edit?id=<?= $row['id'] ?>">แก้ไข</a></td>
+                </tr>
+            <?php endwhile; ?>
+        </table>
+
+        <?php mysqli_close($conn); ?>
+
     </section>
 
     <!-- Bootstrap core JS-->

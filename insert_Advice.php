@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $imageTmp = $_FILES['image']['tmp_name'];
 
         // โฟลเดอร์ปลายทางที่เก็บภาพ
-        $uploadDir = 'assets/img/uploads/advice';
+        $uploadDir = 'assets/img/uploads/advice/';
         if (!is_dir($uploadDir)) {
             mkdir($uploadDir, 0777, true); // สร้างโฟลเดอร์ถ้ายังไม่มี
         }
@@ -26,11 +26,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // ย้ายไฟล์ภาพไปยังโฟลเดอร์
         if (move_uploaded_file($imageTmp, $targetFile)) {
             // บันทึกข้อมูลลงในฐานข้อมูล
-            $stmt = $conn->prepare("INSERT INTO food (name, details, image) VALUES (?, ?, ?)");
+            $stmt = $conn->prepare("INSERT INTO advice (name, details, image) VALUES (?, ?, ?)");
             $stmt->bind_param("sss", $name, $details, $newImageName);
 
             if ($stmt->execute()) {
-                header("Location: advice.php");
+                header("Location: advice.php?success=1");
             } else {
                 echo "เกิดข้อผิดพลาดในการบันทึกข้อมูล: " . $stmt->error;
             }

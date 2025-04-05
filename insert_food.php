@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $stmt->bind_param("sss", $name, $details, $newImageName);
 
             if ($stmt->execute()) {
-                header("Location: add_food.php");
+                header("Location: add_food.php?success=1");
             } else {
                 echo "เกิดข้อผิดพลาดในการบันทึกข้อมูล: " . $stmt->error;
             }

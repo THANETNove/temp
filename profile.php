@@ -125,14 +125,14 @@
     }
 
     // ✅ แสดง Navbar ตาม status
-    /*    if ($user['status'] == 1) {
+    if ($user['status'] == 1) {
         include('navber_patient.php'); // ผู้ป่วย
     } elseif ($user['status'] == 2) {
         include('navber_admin.php'); // แอดมิน
     } elseif ($user['status'] == 3) {
         include('navber_doctor.php'); // แพทย์
-    } */
-    include('navber_patient.php'); // ผู้ป่วย
+    }
+
     ?>
 
 

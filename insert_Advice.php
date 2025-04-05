@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $imageTmp = $_FILES['image']['tmp_name'];
 
         // โฟลเดอร์ปลายทางที่เก็บภาพ
-        $uploadDir = 'assets/img/uploads/food/';
+        $uploadDir = 'assets/img/uploads/advice';
         if (!is_dir($uploadDir)) {
             mkdir($uploadDir, 0777, true); // สร้างโฟลเดอร์ถ้ายังไม่มี
         }
@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $stmt->bind_param("sss", $name, $details, $newImageName);
 
             if ($stmt->execute()) {
-                header("Location: add_food.php");
+                header("Location: advice.php");
             } else {
                 echo "เกิดข้อผิดพลาดในการบันทึกข้อมูล: " . $stmt->error;
             }

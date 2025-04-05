@@ -82,14 +82,14 @@
     <section class="page-section" id="contact">
         <div class="container">
             <div class="text-center">
-                <h2 class="section-heading text-uppercase">Menu</h2>
+                <h2 class="section-heading text-uppercase">Advice</h2>
 
             </div>
 
 
             <div class="form-section">
-                <form action="insert_food.php" method="POST" enctype="multipart/form-data">
-                    <h3 class="mb-4">เมนูอาหาร</h3>
+                <form action="insert_Advice.php" method="POST" enctype="multipart/form-data">
+                    <h3 class="mb-4">Advice</h3>
                     <div class="row">
                         <div class="col-md-12 mb-3">
                             <input class="form-control" type="text" name="name" placeholder="ชื่อเมนู" required>

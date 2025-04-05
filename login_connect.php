@@ -16,6 +16,7 @@ $result = mysqli_query($conn, $sql);
 // ตรวจสอบผลลัพธ์
 if ($row = mysqli_fetch_assoc($result)) {
     // ถ้าเข้าสู่ระบบสำเร็จ
+    echo "เข้าสู่ระบบสำเร็จ";
     $_SESSION['user_id'] = $row['id'];
     $_SESSION['user_name'] = $row['name_lastname'];
     $_SESSION['user_email'] = $row['email'];
@@ -25,6 +26,7 @@ if ($row = mysqli_fetch_assoc($result)) {
     //echo 'เข้าสู่ระบบสำเร็จ';
 
     if ($row['status'] == 1) {
+        echo "เข้าสู่ระบบสำเร็จ";
         header("Location: index.php");
     } elseif ($row['status'] == 2) {
         header("Location: index_admin.php");

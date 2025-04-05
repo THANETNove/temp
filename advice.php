@@ -78,7 +78,6 @@
 <body id="page-top">
     <!-- Navigation-->
     <?php include('navber_admin.php'); ?>
-
     <!-- Contact-->
     <section class="page-section" id="contact">
         <div class="container">

@@ -17,28 +17,36 @@
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="css/styles.css" rel="stylesheet" />
     <style type="text/css">
-        body,
-        td,
-        th {
-            color: #43D0C7;
-        }
+    body,
+    td,
+    th {
+        color: #43D0C7;
+    }
 
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
-            font-family: Montserrat, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-        }
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-family: Montserrat, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    }
 
-        h1 {
-            font-size: large;
-        }
+    h1 {
+        font-size: large;
+    }
 
-        h2 {
-            font-size: large;
-        }
+    h2 {
+        font-size: large;
+    }
+
+    header.masthead .masthead-subheading {
+        font-size: 2.25rem;
+        font-style: italic;
+        line-height: 2.25rem;
+        margin-bottom: 2rem;
+        padding-top: 8rem !important;
+    }
     </style>
 </head>
 
@@ -47,7 +55,8 @@
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
         <div class="container">
             <a class="navbar-brand" href="#page-top"><img src="img/fine.svg" alt="..." width="160" height="1600" /></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 Menu
                 <i class="fas fa-bars ms-1"></i></button>
             <?php session_start(); ?>
@@ -57,18 +66,19 @@
                     <li class="nav-item"><a class="nav-link" href="pa.php">Patient information</a></li>
                     <li class="nav-item"><a class="nav-link" href="advise.php">Advise for patient</a></li>
                     <?php if (!isset($_SESSION['user_id'])): ?>
-                        <li class="nav-item"><a class="nav-link" href="login.php">Login</a></li>
-                        <li class="nav-item"><a class="nav-link" href="regis_patient.php">Register</a></li>
+                    <li class="nav-item"><a class="nav-link" href="login.php">Login</a></li>
+                    <li class="nav-item"><a class="nav-link" href="regis_patient.php">Register</a></li>
                     <?php else: ?>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-capitalize" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                สวัสดีคุณ <?php echo $_SESSION['user_name']; ?>
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-                                <li><a class="dropdown-item" href="profile.php">โปรไฟล์</a></li>
-                                <li><a class="dropdown-item" href="logout.php">ออกจากระบบ</a></li>
-                            </ul>
-                        </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-capitalize" href="#" id="userDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Welcome! <?php echo $_SESSION['user_name']; ?>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                            <li><a class="dropdown-item" href="profile.php">โปรไฟล์</a></li>
+                            <li><a class="dropdown-item" href="logout.php">ออกจากระบบ</a></li>
+                        </ul>
+                    </li>
 
 
                     <?php endif; ?>
@@ -92,46 +102,55 @@
     <section class="page-section bg-light" id="portfolio"></section>
     <!-- About-->
     <section class="page-section" id="about"></section>
-    <!-- Team--><!-- Clients-->
+    <!-- Team-->
+    <!-- Clients-->
     <div class="py-5">
         <div class="container"></div>
     </div>
     <!-- Contact-->
     <p>&nbsp;</p>
-    <form id="form1" name="form1" method="post"
-        action="user_add.php">
+    <form id="form1" name="form1" method="post" action="user_add.php">
         <section class="page-section" id="contact">
             <div class="container">
                 <div class="text-center">
                     <h2 class="section-heading text-uppercase">Register</h2>
                     <h3 class="section-subheading text-muted">Personal Information.</h3>
                     <p><span class="section-subheading text-muted"><span class="form-group">
-                                <input class="form-control" id="text" type="text" placeholder="ชื่อ-สกุล" data-sb-validations="required," />
+                                <input class="form-control" id="text" type="text" placeholder="ชื่อ-สกุล"
+                                    data-sb-validations="required," />
                             </span></span></p>
                     <p><span class="form-group">
-                            <input class="form-control" id="number" type="number" placeholder="เลขบัตรประจำตัวประชาชน " data-sb-validations="required," />
+                            <input class="form-control" id="number" type="number" placeholder="เลขบัตรประจำตัวประชาชน "
+                                data-sb-validations="required," />
                         </span></p>
                     <p><span class="form-group">
-                            <input class="form-control" id="number" type="number" placeholder="วัน/เดือน/ปีเกิด " data-sb-validations="required,text" />
+                            <input class="form-control" id="number" type="number" placeholder="วัน/เดือน/ปีเกิด "
+                                data-sb-validations="required,text" />
                         </span></p>
                 </div>
                 <p><span class="form-group">
-                        <input class="form-control" id="text" type="text" placeholder="เพศ " data-sb-validations="required," />
+                        <input class="form-control" id="text" type="text" placeholder="เพศ "
+                            data-sb-validations="required," />
                     </span></p>
                 <p><span class="form-group">
-                        <input class="form-control" id="number" type="number" placeholder="อายุ" data-sb-validations="required," />
+                        <input class="form-control" id="number" type="number" placeholder="อายุ"
+                            data-sb-validations="required," />
                     </span></p>
                 <p>
-                    <input class="form-control" id="number" type="number" placeholder="เลขที่ใบประกอบวิชาชีพ" data-sb-validations="required," />
+                    <input class="form-control" id="number" type="number" placeholder="เลขที่ใบประกอบวิชาชีพ"
+                        data-sb-validations="required," />
                 </p>
                 <p>
-                    <input class="form-control" id="number" type="number" placeholder="ส่วนสูง" data-sb-validations="required," />
+                    <input class="form-control" id="number" type="number" placeholder="ส่วนสูง"
+                        data-sb-validations="required," />
                 </p>
                 <p>
-                    <input class="form-control" id="email2" type="email" placeholder="อีเมล" data-sb-validations="required,email" />
+                    <input class="form-control" id="email2" type="email" placeholder="อีเมล"
+                        data-sb-validations="required,email" />
                 </p>
                 <p>
-                    <input class="form-control" id="text2" type="text" placeholder="ที่อยู่" data-sb-validations="required," />
+                    <input class="form-control" id="text2" type="text" placeholder="ที่อยู่"
+                        data-sb-validations="required," />
                 <p>&nbsp;</p>
                 <p>&nbsp;</p>
                 <p>&nbsp;</p>
@@ -145,7 +164,8 @@
                 <div class="text-center text-white mb-3">
                     <div class="fw-bolder">Form submission successful!</div>
                     To activate this form, sign up at <br />
-                    <a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
+                    <a
+                        href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
                 </div>
             </div>
             </div>
@@ -157,7 +177,8 @@
                 <div class="text-center text-white mb-3">
                     <div class="fw-bolder">Form submission successful!</div>
                     To activate this form, sign up at <br />
-                    <a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
+                    <a
+                        href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
                 </div>
             </div>
             <!-- Submit error message-->
@@ -181,7 +202,8 @@
         <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
+                    <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg"
+                            alt="Close modal" /></div>
                     <div class="container">
                         <div class="row justify-content-center">
                             <div class="col-lg-8">
@@ -190,7 +212,10 @@
                                     <h2 class="text-uppercase">Project Name</h2>
                                     <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
                                     <img class="img-fluid d-block mx-auto" src="assets/img/portfolio/1.jpg" alt="..." />
-                                    <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
+                                    <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur
+                                        adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos
+                                        deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores
+                                        repudiandae, nostrum, reiciendis facere nemo!</p>
                                     <ul class="list-inline">
                                         <li>
                                             <strong>Client:</strong>
@@ -201,7 +226,8 @@
                                             Illustration
                                         </li>
                                     </ul>
-                                    <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
+                                    <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal"
+                                        type="button">
                                         <i class="fas fa-xmark me-1"></i>
                                         Close Project
                                     </button>
@@ -216,7 +242,8 @@
         <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
+                    <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg"
+                            alt="Close modal" /></div>
                     <div class="container">
                         <div class="row justify-content-center">
                             <div class="col-lg-8">
@@ -225,7 +252,10 @@
                                     <h2 class="text-uppercase">Project Name</h2>
                                     <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
                                     <img class="img-fluid d-block mx-auto" src="assets/img/portfolio/2.jpg" alt="..." />
-                                    <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
+                                    <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur
+                                        adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos
+                                        deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores
+                                        repudiandae, nostrum, reiciendis facere nemo!</p>
                                     <ul class="list-inline">
                                         <li>
                                             <strong>Client:</strong>
@@ -236,7 +266,8 @@
                                             Graphic Design
                                         </li>
                                     </ul>
-                                    <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
+                                    <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal"
+                                        type="button">
                                         <i class="fas fa-xmark me-1"></i>
                                         Close Project
                                     </button>
@@ -251,7 +282,8 @@
         <div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
+                    <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg"
+                            alt="Close modal" /></div>
                     <div class="container">
                         <div class="row justify-content-center">
                             <div class="col-lg-8">
@@ -260,7 +292,10 @@
                                     <h2 class="text-uppercase">Project Name</h2>
                                     <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
                                     <img class="img-fluid d-block mx-auto" src="assets/img/portfolio/3.jpg" alt="..." />
-                                    <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
+                                    <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur
+                                        adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos
+                                        deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores
+                                        repudiandae, nostrum, reiciendis facere nemo!</p>
                                     <ul class="list-inline">
                                         <li>
                                             <strong>Client:</strong>
@@ -271,7 +306,8 @@
                                             Identity
                                         </li>
                                     </ul>
-                                    <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
+                                    <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal"
+                                        type="button">
                                         <i class="fas fa-xmark me-1"></i>
                                         Close Project
                                     </button>
@@ -286,7 +322,8 @@
         <div class="portfolio-modal modal fade" id="portfolioModal4" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
+                    <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg"
+                            alt="Close modal" /></div>
                     <div class="container">
                         <div class="row justify-content-center">
                             <div class="col-lg-8">
@@ -295,7 +332,10 @@
                                     <h2 class="text-uppercase">Project Name</h2>
                                     <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
                                     <img class="img-fluid d-block mx-auto" src="assets/img/portfolio/4.jpg" alt="..." />
-                                    <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
+                                    <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur
+                                        adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos
+                                        deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores
+                                        repudiandae, nostrum, reiciendis facere nemo!</p>
                                     <ul class="list-inline">
                                         <li>
                                             <strong>Client:</strong>
@@ -306,7 +346,8 @@
                                             Branding
                                         </li>
                                     </ul>
-                                    <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
+                                    <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal"
+                                        type="button">
                                         <i class="fas fa-xmark me-1"></i>
                                         Close Project
                                     </button>
@@ -321,7 +362,8 @@
         <div class="portfolio-modal modal fade" id="portfolioModal5" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
+                    <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg"
+                            alt="Close modal" /></div>
                     <div class="container">
                         <div class="row justify-content-center">
                             <div class="col-lg-8">
@@ -330,7 +372,10 @@
                                     <h2 class="text-uppercase">Project Name</h2>
                                     <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
                                     <img class="img-fluid d-block mx-auto" src="assets/img/portfolio/5.jpg" alt="..." />
-                                    <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
+                                    <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur
+                                        adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos
+                                        deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores
+                                        repudiandae, nostrum, reiciendis facere nemo!</p>
                                     <ul class="list-inline">
                                         <li>
                                             <strong>Client:</strong>
@@ -341,7 +386,8 @@
                                             Website Design
                                         </li>
                                     </ul>
-                                    <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
+                                    <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal"
+                                        type="button">
                                         <i class="fas fa-xmark me-1"></i>
                                         Close Project
                                     </button>
@@ -356,7 +402,8 @@
         <div class="portfolio-modal modal fade" id="portfolioModal6" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
+                    <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg"
+                            alt="Close modal" /></div>
                     <div class="container">
                         <div class="row justify-content-center">
                             <div class="col-lg-8">
@@ -365,7 +412,10 @@
                                     <h2 class="text-uppercase">Project Name</h2>
                                     <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
                                     <img class="img-fluid d-block mx-auto" src="assets/img/portfolio/6.jpg" alt="..." />
-                                    <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
+                                    <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur
+                                        adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos
+                                        deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores
+                                        repudiandae, nostrum, reiciendis facere nemo!</p>
                                     <ul class="list-inline">
                                         <li>
                                             <strong>Client:</strong>
@@ -376,7 +426,8 @@
                                             Photography
                                         </li>
                                     </ul>
-                                    <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
+                                    <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal"
+                                        type="button">
                                         <i class="fas fa-xmark me-1"></i>
                                         Close Project
                                     </button>

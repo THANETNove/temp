@@ -137,6 +137,8 @@
                                 style="padding:10px; background-color: #d1ecf1; color: #0c5460; border: 1px solid #bee5eb; margin-bottom: 10px;">
                                 ✏️ แก้ไขข้อมูลเรียบร้อยแล้ว
                             </div>
+                        <?php elseif ($_GET['success'] == 3): ?>
+                            <div class="alert alert-danger">🗑️ ลบข้อมูลและรูปภาพเรียบร้อยแล้ว</div>
                         <?php endif; ?>
                     <?php endif; ?>
 
@@ -191,7 +193,8 @@
                     <td>
                         <div class="action-buttons">
                             <a href="food_edit.php?id=<?= $row['id'] ?>" class="btn btn-primary mb-2 w-100">แก้ไข</a>
-                            <a href="delete_food.php?id=<?= $row['id'] ?>" class="btn btn-danger w-100">ลบ</a>
+                            <a href="delete_food.php?id=<?= $row['id'] ?>" class="btn btn-danger w-100"
+                                onclick="return confirm('⚠️ คุณแน่ใจหรือไม่ว่าต้องการลบรายการนี้?')">ลบ</a>
                         </div>
 
                     </td>

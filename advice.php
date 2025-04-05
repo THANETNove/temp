@@ -96,6 +96,12 @@
             padding: 12px 15px;
             text-align: left;
         }
+
+        .action-buttons {
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+        }
     </style>
 </head>
 
@@ -182,7 +188,7 @@
                     <td><?= $row['name'] ?></td>
                     <td><?= $row['details'] ?></td>
                     <td><img src="assets/img/uploads/food/<?= $row['image'] ?>" width="150"></td>
-                    <td><a href="food_edit?id=<?= $row['id'] ?>">แก้ไข</a></td>
+                    <td><a href="update_food?id=<?= $row['id'] ?>">แก้ไข</a></td>
                 </tr>
             <?php endwhile; ?>
         </table>

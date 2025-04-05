@@ -95,6 +95,12 @@
             padding: 12px 15px;
             text-align: left;
         }
+
+        .action-buttons {
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+        }
     </style>
 
     </style>
@@ -120,11 +126,18 @@
             <div class="form-section">
 
                 <form action="insert_food.php" method="POST" enctype="multipart/form-data">
-                    <?php if (isset($_GET['success']) && $_GET['success'] == 1): ?>
-                        <div
-                            style="padding:10px; background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; margin-bottom: 10px;">
-                            ✅ บันทึกข้อมูลเรียบร้อยแล้ว
-                        </div>
+                    <?php if (isset($_GET['success'])): ?>
+                        <?php if ($_GET['success'] == 1): ?>
+                            <div
+                                style="padding:10px; background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; margin-bottom: 10px;">
+                                ✅ บันทึกข้อมูลเรียบร้อยแล้ว
+                            </div>
+                        <?php elseif ($_GET['success'] == 2): ?>
+                            <div
+                                style="padding:10px; background-color: #d1ecf1; color: #0c5460; border: 1px solid #bee5eb; margin-bottom: 10px;">
+                                ✏️ แก้ไขข้อมูลเรียบร้อยแล้ว
+                            </div>
+                        <?php endif; ?>
                     <?php endif; ?>
 
                     <h3 class="mb-4">เมนูอาหาร</h3>
@@ -175,7 +188,13 @@
                     <td><?= $row['name'] ?></td>
                     <td><?= $row['details'] ?></td>
                     <td><img src="assets/img/uploads/food/<?= $row['image'] ?>" width="150"></td>
-                    <td><a href="food_edit?id=<?= $row['id'] ?>">แก้ไข</a></td>
+                    <td>
+                        <div class="action-buttons">
+                            <a href="food_edit.php?id=<?= $row['id'] ?>" class="btn btn-primary mb-2 w-100">แก้ไข</a>
+                            <a href="delete_food.php?id=<?= $row['id'] ?>" class="btn btn-danger w-100">ลบ</a>
+                        </div>
+
+                    </td>
                 </tr>
             <?php endwhile; ?>
         </table>

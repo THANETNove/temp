@@ -37,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($status == 1) {
             header("Location: patient.php");
         } elseif ($status == 2) {
-            /*  header("Location: index_admin.php"); */
+            header("Location: index_admin.php");
         } elseif ($status == 3) {
             header("Location: doctor.php");
         }

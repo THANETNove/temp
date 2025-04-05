@@ -94,7 +94,6 @@
 
 <body id="page-top">
     <!-- Navigation-->
-    <?php include('navber_admin.php'); ?>
     <?php
     // ดึงข้อมูลจากฐานข้อมูลด้วย user_id (เช่นผ่าน SESSION)
     require 'connect_db.php';
@@ -105,6 +104,18 @@
     $user = mysqli_fetch_assoc($result);
     mysqli_close($conn);
     ?>
+    <?php if ($user['status'] == 1): // แพทย์ 
+    ?>
+    <?php include('navber_patient.php'); ?>
+    <?php elseif ($user['status'] == 2): // แอดมิน 
+    ?>
+    <?php include('navber_admin.php'); ?>
+    <?php elseif ($user['status'] == 3): // หมอ 
+    ?>
+    <?php include('navber_doctor.php'); ?>
+    <?php endif; ?>
+
+
     <section class="page-section" id="contact">
         <div class="container">
             <div class="profile-card">

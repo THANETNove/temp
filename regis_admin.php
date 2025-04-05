@@ -17,61 +17,61 @@
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="css/styles.css" rel="stylesheet" />
     <style type="text/css">
-        body,
-        td,
-        th {
-            color: #43D0C7;
-        }
+    body,
+    td,
+    th {
+        color: #43D0C7;
+    }
 
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
-            font-family: Montserrat, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-        }
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-family: Montserrat, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    }
 
-        h1 {
-            font-size: large;
-        }
+    h1 {
+        font-size: large;
+    }
 
-        h2 {
-            font-size: large;
-        }
+    h2 {
+        font-size: large;
+    }
 
-        .form-control:focus {
+    .form-control:focus {
 
-            border-color: #43D0C7;
-            box-shadow: 0 0 0 0.25rem rgba(67, 208, 199, 0.25);
-        }
+        border-color: #43D0C7;
+        box-shadow: 0 0 0 0.25rem rgba(67, 208, 199, 0.25);
+    }
 
-        .btn-primary {
-            background-color: #43D0C7;
-            border-color: #43D0C7;
-        }
+    .btn-primary {
+        background-color: #43D0C7;
+        border-color: #43D0C7;
+    }
 
-        .btn-primary:hover {
-            background-color: #2bb5ac;
-            border-color: #2bb5ac;
-        }
+    .btn-primary:hover {
+        background-color: #2bb5ac;
+        border-color: #2bb5ac;
+    }
 
-        .form-section {
-            width: 100%;
-            display: flex;
-            justify-content: center;
+    .form-section {
+        width: 100%;
+        display: flex;
+        justify-content: center;
 
-            /* ให้มีความสูงเต็มหน้าจอ */
-        }
+        /* ให้มีความสูงเต็มหน้าจอ */
+    }
 
-        .page-section form {
-            width: 70%;
-            max-width: 800px;
-            background: #ffffff;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-        }
+    .page-section form {
+        width: 70%;
+        max-width: 800px;
+        background: #ffffff;
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    }
     </style>
 </head>
 
@@ -79,8 +79,10 @@
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
         <div class="container">
-            <a class="navbar-brand" href="index.php"><img src="assets/img/navbar-logo.svg" alt="..." width="160" height="1600" /></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <a class="navbar-brand" href="index.php"><img src="assets/img/navbar-logo.svg" alt="..." width="160"
+                    height="1600" /></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 Menu
                 <i class="fas fa-bars ms-1"></i></button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
@@ -110,10 +112,12 @@
                     <h3 class="mb-4">Admin</h3>
                     <div class="row">
                         <div class="col-md-6 mb-3">
-                            <input class="form-control" type="text" name="name_lastname" placeholder="ชื่อ-สกุล" required>
+                            <input class="form-control" type="text" name="name_lastname" placeholder="ชื่อ-สกุล"
+                                required>
                         </div>
                         <div class="col-md-6 mb-3">
-                            <input class="form-control" type="text" name="license" placeholder="เลขบัตรประจำตัวประชาชน" required>
+                            <input class="form-control" type="text" name="license" placeholder="เลขบัตรประจำตัวประชาชน"
+                                required>
                         </div>
                         <div class="col-md-6 mb-3">
                             <input class="form-control" type="date" name="date" placeholder="วัน/เดือน/ปีเกิด" required>
@@ -133,7 +137,8 @@
                             <input class="form-control" type="number" name="tel" placeholder="เบอร์โทร" required>
                         </div>
                         <div class="col-md-12 mb-3">
-                            <textarea class="form-control" name="address" placeholder="ที่อยู่" rows="2" required></textarea>
+                            <textarea class="form-control" name="address" placeholder="ที่อยู่" rows="2"
+                                required></textarea>
                         </div>
                         <div class="col-md-12 mb-3">
                             <input class="form-control" type="email" name="email" placeholder="อีเมล" required>

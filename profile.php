@@ -95,25 +95,45 @@
 <body id="page-top">
     <!-- Navigation-->
     <?php
-    // ดึงข้อมูลจากฐานข้อมูลด้วย user_id (เช่นผ่าน SESSION)
     require 'connect_db.php';
+    // ✅ เริ่ม session ให้เรียบร้อยก่อนใช้ $_SESSION
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
 
-    $user_id = $_SESSION['user_id'];
+    // ✅ เช็คว่า login หรือยัง
+    if (!isset($_SESSION['user_id'])) {
+        // ยังไม่ login → redirect หรือแสดง navbar แขก
+        header("Location: login.php");
+        exit;
+    }
+
+    // ✅ เชื่อมต่อฐานข้อมูล
+
+
+    // ✅ ดึงข้อมูลผู้ใช้
+    $user_id = intval($_SESSION['user_id']);
     $sql = "SELECT * FROM users WHERE id = $user_id LIMIT 1";
     $result = mysqli_query($conn, $sql);
     $user = mysqli_fetch_assoc($result);
     mysqli_close($conn);
+
+    // ✅ ตรวจสอบว่า query สำเร็จและมีข้อมูล
+    if (!$user) {
+        echo "ไม่พบข้อมูลผู้ใช้";
+        exit;
+    }
+
+    // ✅ แสดง Navbar ตาม status
+    /*    if ($user['status'] == 1) {
+        include('navber_patient.php'); // ผู้ป่วย
+    } elseif ($user['status'] == 2) {
+        include('navber_admin.php'); // แอดมิน
+    } elseif ($user['status'] == 3) {
+        include('navber_doctor.php'); // แพทย์
+    } */
+    include('navber_patient.php'); // ผู้ป่วย
     ?>
-    <?php if ($user['status'] == 1): // แพทย์ 
-    ?>
-    <?php include('navber_patient.php'); ?>
-    <?php elseif ($user['status'] == 2): // แอดมิน 
-    ?>
-    <?php include('navber_admin.php'); ?>
-    <?php elseif ($user['status'] == 3): // หมอ 
-    ?>
-    <?php include('navber_doctor.php'); ?>
-    <?php endif; ?>
 
 
     <section class="page-section" id="contact">
@@ -194,7 +214,7 @@
     <!-- * *                               SB Forms JS                               * *-->
     <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
     <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-    <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+
 </body>
 
 </html>

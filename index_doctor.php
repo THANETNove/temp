@@ -53,6 +53,8 @@
 <body id="page-top">
     <!-- Navigation-->
 
+    <?php include('navber_doctor.php'); ?>
+
     <!-- Masthead-->
     <header class="masthead">
         <div class="container">

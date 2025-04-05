@@ -92,7 +92,7 @@
                     <h3 class="mb-4">Advice</h3>
                     <div class="row">
                         <div class="col-md-12 mb-3">
-                            <input class="form-control" type="text" name="name" placeholder="ชื่อเมนู" required>
+                            <input class="form-control" type="text" name="name" placeholder="ชื่อ" required>
                         </div>
                         <div class="col-md-12 mb-3">
                             <textarea class="form-control" name="details" placeholder="รายละเอียด" rows="2"

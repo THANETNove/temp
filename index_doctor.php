@@ -88,6 +88,9 @@
 
     <section class="page-section" id="appointment">
         <?php
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
 
         require 'connect_db.php';
 
@@ -139,6 +142,30 @@
 
                 <div class="container mt-5">
                     <h2 class="text-uppercase mb-3">📋 รายการพบเเพทย์</h2>
+                    <?php
+                    require 'connect_db.php';
+
+                    $search = isset($_GET['search']) ? mysqli_real_escape_string($conn, $_GET['search']) : '';
+
+                    $sql = "SELECT ap.*, u.name_lastname AS user_name 
+                        FROM appointments ap 
+                        LEFT JOIN users u ON ap.user_id = u.id 
+                        WHERE ap.status = 'pending'
+                        AND u.name_lastname LIKE '%$search%' 
+                        ORDER BY ap.appointment_date ASC";
+
+                    $resultMake = mysqli_query($conn, $sql);
+
+                    ?>
+
+                    <!-- ฟอร์มค้นหา -->
+                    <form method="GET" class="mb-3 d-flex" role="search">
+                        <input type="text" name="search" class="form-control me-2" placeholder="ค้นหาชื่อผู้ใช้"
+                            value="<?= isset($_GET['search']) ? htmlspecialchars($_GET['search']) : '' ?>">
+                        <button type="submit" class="btn btn-primary">ค้นหา</button>
+                    </form>
+
+
 
                     <?php if (mysqli_num_rows($resultMake) > 0): ?>
                         <table class="table table-bordered table-striped">

@@ -85,6 +85,104 @@
 
         </div>
     </header>
+
+    <section class="page-section" id="appointment">
+        <?php
+
+        require 'connect_db.php';
+
+        // ตรวจสอบการ login
+        if (!isset($_SESSION['user_id'])) {
+            echo "<div class='alert alert-danger'>กรุณาเข้าสู่ระบบก่อนทำการนัดหมาย</div>";
+            exit;
+        }
+
+        // โหลดข้อมูลการนัดที่ยังไม่ได้เลือกแพทย์
+        $sql = "SELECT 
+            ap.*, 
+            u.name_lastname AS user_name
+                FROM appointments ap
+                LEFT JOIN users u ON ap.user_id = u.id
+                WHERE ap.doctor_id IS NULL AND ap.status = 'pending'
+                ORDER BY ap.created_at DESC";
+
+        $resultMake = mysqli_query($conn, $sql);
+
+        // โหลดรายชื่อแพทย์
+
+        $i = 1;
+        ?>
+        <div>
+
+            <div>
+                <div class="text-center">
+                    <?php if (isset($_GET['success']) && $_GET['success'] == 1): ?>
+                        <div style="
+                            display: inline-block;
+                            padding: 10px;
+                            background-color: #d4edda;
+                            color: #155724;
+                            border: 1px solid #c3e6cb;
+                            margin-bottom: 16px;
+                            border-radius: 5px;
+                            font-size: 16px;">
+                            ✅ บันทึกข้อมูลเรียบร้อยแล้ว
+                        </div>
+                    <?php endif; ?>
+
+
+                    <h2 class="section-heading text-uppercase">รายการพบเเพทย์</h2>
+                    <h3 class="section-subheading text-muted">เระบบนัดพบแพทย์ สำหรับการดูแลสุขภาพเฉพาะทาง
+                    </h3>
+
+                </div>
+
+                <div class="container mt-5">
+                    <h2 class="text-uppercase mb-3">📋 รายการพบเเพทย์</h2>
+
+                    <?php if (mysqli_num_rows($resultMake) > 0): ?>
+                        <table class="table table-bordered table-striped">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>ลำดับ</th>
+                                    <th>วันเวลานัดพบ</th>
+                                    <th>รายละเอียด</th>
+                                    <th>ผู้ใช้</th>
+                                    <th>completed</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php while ($row = mysqli_fetch_assoc($resultMake)): ?>
+                                    <tr>
+                                        <td><?= $i++ ?></td>
+                                        <td>
+                                            <?= date("d/m/Y", strtotime($row['appointment_date'])) ?>
+                                            : <?= htmlspecialchars($row['appointment_time']) ?>
+                                        </td>
+                                        <td><?= nl2br(htmlspecialchars($row['symptoms'])) ?></td>
+                                        <td><?= htmlspecialchars($row['user_name']) ?></td>
+                                        <td>
+                                            <form action="update_appointment.php" method="POST" class="d-flex">
+                                                <input type="hidden" name="appointment_id" value="<?= $row['id'] ?>">
+                                                <select name="status" class="form-select me-2" required>
+                                                    <option value="">-- เลือกสถานะ --</option>
+                                                    <option value="completed">พบแพทย์แล้ว</option>
+                                                </select>
+                                                <button type="submit" class="btn btn-success btn-sm">ยืนยัน</button>
+                                            </form>
+
+                                        </td>
+                                    </tr>
+                                <?php endwhile; ?>
+                            </tbody>
+                        </table>
+                    <?php endif; ?>
+                </div>
+            </div>
+        </div>
+
+        </div>
+    </section>
     <!-- Services-->
     <section class="page-section" id="questions">
 

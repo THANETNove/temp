@@ -18,36 +18,36 @@
        <!-- Core theme CSS (includes Bootstrap)-->
        <link href="css/styles.css" rel="stylesheet" />
        <style type="text/css">
-           body,
-           td,
-           th {
-               color: #43D0C7;
-           }
+       body,
+       td,
+       th {
+           color: #43D0C7;
+       }
 
-           h1,
-           h2,
-           h3,
-           h4,
-           h5,
-           h6 {
-               font-family: Montserrat, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-           }
+       h1,
+       h2,
+       h3,
+       h4,
+       h5,
+       h6 {
+           font-family: Montserrat, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+       }
 
-           h1 {
-               font-size: large;
-           }
+       h1 {
+           font-size: large;
+       }
 
-           h2 {
-               font-size: large;
-           }
+       h2 {
+           font-size: large;
+       }
 
-           header.masthead .masthead-subheading {
-               font-size: 2.25rem;
-               font-style: italic;
-               line-height: 2.25rem;
-               margin-bottom: 2rem;
-               padding-top: 8rem !important;
-           }
+       header.masthead .masthead-subheading {
+           font-size: 2.25rem;
+           font-style: italic;
+           line-height: 2.25rem;
+           margin-bottom: 2rem;
+           padding-top: 8rem !important;
+       }
        </style>
    </head>
 
@@ -70,6 +70,7 @@
            </div>
        </header>
        <!-- Services-->
+
        <section class="page-section" id="makeDoctor">
            <?php
             session_start();
@@ -107,7 +108,7 @@
                <div>
                    <div class="text-center">
                        <?php if (isset($_GET['success']) && $_GET['success'] == 1): ?>
-                           <div style="
+                       <div style="
                             display: inline-block;
                             padding: 10px;
                             background-color: #d4edda;
@@ -116,58 +117,57 @@
                             margin-bottom: 16px;
                             border-radius: 5px;
                             font-size: 16px;">
-                               ✅ บันทึกข้อมูลเรียบร้อยแล้ว
-                           </div>
+                           ✅ บันทึกข้อมูลเรียบร้อยแล้ว
+                       </div>
                        <?php endif; ?>
 
 
-                       <h2 class="section-heading text-uppercase">นัดพบเเพทนย์</h2>
-                       <h3 class="section-subheading text-muted">เริ่มต้นการนัดหมายกับแพทย์
-                           เพื่อรับคำแนะนำเฉพาะสำหรับคุณ
+                       <h2 class="section-heading text-uppercase">รายการนัดพบเเพทย์</h2>
+                       <h3 class="section-subheading text-muted">ระบบนัดพบแพทย์ สำหรับการดูแลสุขภาพเฉพาะทาง
                        </h3>
 
                    </div>
 
                    <div class="container mt-5">
-                       <h2 class="text-uppercase mb-3">📋 ประวัติการนัดพบเเพทย์</h2>
+                       <h2 class="text-uppercase mb-3">📋 รายการนัดพบเเพทย์</h2>
 
                        <?php if (mysqli_num_rows($resultMake) > 0): ?>
-                           <table class="table table-bordered table-striped">
-                               <thead class="table-light">
-                                   <tr>
-                                       <th>ลำดับ</th>
-                                       <th>วันเวลานัดพบ</th>
-                                       <th>รายละเอียด</th>
-                                       <th>ผู้ใช้</th>
-                                       <th>เลือกแพทย์</th>
-                                   </tr>
-                               </thead>
-                               <tbody>
-                                   <?php while ($row = mysqli_fetch_assoc($resultMake)): ?>
-                                       <tr>
-                                           <td><?= $i++ ?></td>
-                                           <td>
-                                               <?= date("d/m/Y", strtotime($row['appointment_date'])) ?>
-                                               : <?= htmlspecialchars($row['appointment_time']) ?>
-                                           </td>
-                                           <td><?= nl2br(htmlspecialchars($row['symptoms'])) ?></td>
-                                           <td><?= htmlspecialchars($row['user_name']) ?></td>
-                                           <td>
-                                               <form action="update_doctor.php" method="POST" class="d-flex">
-                                                   <input type="hidden" name="appointment_id" value="<?= $row['id'] ?>">
-                                                   <select name="doctor_id" class="form-select me-2" required>
-                                                       <option value="">-- เลือกแพทย์ --</option>
-                                                       <?php foreach ($doctors as $id => $name): ?>
-                                                           <option value="<?= $id ?>"><?= htmlspecialchars($name) ?></option>
-                                                       <?php endforeach; ?>
-                                                   </select>
-                                                   <button type="submit" class="btn btn-success btn-sm">ยืนยัน</button>
-                                               </form>
-                                           </td>
-                                       </tr>
-                                   <?php endwhile; ?>
-                               </tbody>
-                           </table>
+                       <table class="table table-bordered table-striped">
+                           <thead class="table-light">
+                               <tr>
+                                   <th>ลำดับ</th>
+                                   <th>วันเวลานัดพบ</th>
+                                   <th>รายละเอียด</th>
+                                   <th>ผู้ใช้</th>
+                                   <th>เลือกแพทย์</th>
+                               </tr>
+                           </thead>
+                           <tbody>
+                               <?php while ($row = mysqli_fetch_assoc($resultMake)): ?>
+                               <tr>
+                                   <td><?= $i++ ?></td>
+                                   <td>
+                                       <?= date("d/m/Y", strtotime($row['appointment_date'])) ?>
+                                       : <?= htmlspecialchars($row['appointment_time']) ?>
+                                   </td>
+                                   <td><?= nl2br(htmlspecialchars($row['symptoms'])) ?></td>
+                                   <td><?= htmlspecialchars($row['user_name']) ?></td>
+                                   <td>
+                                       <form action="update_doctor.php" method="POST" class="d-flex">
+                                           <input type="hidden" name="appointment_id" value="<?= $row['id'] ?>">
+                                           <select name="doctor_id" class="form-select me-2" required>
+                                               <option value="">-- เลือกแพทย์ --</option>
+                                               <?php foreach ($doctors as $id => $name): ?>
+                                               <option value="<?= $id ?>"><?= htmlspecialchars($name) ?></option>
+                                               <?php endforeach; ?>
+                                           </select>
+                                           <button type="submit" class="btn btn-success btn-sm">ยืนยัน</button>
+                                       </form>
+                                   </td>
+                               </tr>
+                               <?php endwhile; ?>
+                           </tbody>
+                       </table>
                        <?php endif; ?>
                    </div>
                </div>

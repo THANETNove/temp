@@ -43,45 +43,45 @@ if (isset($_SESSION['user_id'])) {
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="css/styles.css" rel="stylesheet" />
     <style type="text/css">
-    body,
-    td,
-    th {
-        color: #43D0C7;
-    }
+        body,
+        td,
+        th {
+            color: #43D0C7;
+        }
 
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-        font-family: Montserrat, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-    }
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: Montserrat, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+        }
 
-    h1 {
-        font-size: large;
-    }
+        h1 {
+            font-size: large;
+        }
 
-    h2 {
-        font-size: large;
-    }
+        h2 {
+            font-size: large;
+        }
 
-    .navbar .nav-username {
-        font-weight: 600;
-        color: #1ebfc0 !important;
-        /* สีฟ้าสวย ๆ */
-        pointer-events: none;
-        /* ไม่ให้คลิก */
-        cursor: default;
-        background-color: rgba(30, 191, 192, 0.1);
-        padding: 8px 16px;
-        border-radius: 20px;
-        transition: background 0.3s;
-    }
+        .navbar .nav-username {
+            font-weight: 600;
+            color: #1ebfc0 !important;
+            /* สีฟ้าสวย ๆ */
+            pointer-events: none;
+            /* ไม่ให้คลิก */
+            cursor: default;
+            background-color: rgba(30, 191, 192, 0.1);
+            padding: 8px 16px;
+            border-radius: 20px;
+            transition: background 0.3s;
+        }
 
-    .navbar .nav-username:hover {
-        background-color: rgba(30, 191, 192, 0.2);
-    }
+        .navbar .nav-username:hover {
+            background-color: rgba(30, 191, 192, 0.2);
+        }
     </style>
 </head>
 
@@ -97,8 +97,8 @@ if (isset($_SESSION['user_id'])) {
     <header class="masthead">
 
         <?php if (isset($_GET['success'])): ?>
-        <?php if ($_GET['success'] == 1): ?>
-        <div style="
+            <?php if ($_GET['success'] == 1): ?>
+                <div style="
                     display: inline-block;
                     padding: 10px;
                     background-color: #d4edda;
@@ -107,10 +107,10 @@ if (isset($_SESSION['user_id'])) {
                     margin-bottom: 10px;
                     border-radius: 5px;
                     font-size: 16px;">
-            ✅ ส่งข้อมูลเรียบร้อยแล้ว
-        </div>
-        <?php elseif ($_GET['success'] == 2): ?>
-        <div style="
+                    ✅ ส่งข้อมูลเรียบร้อยแล้ว
+                </div>
+            <?php elseif ($_GET['success'] == 2): ?>
+                <div style="
                         display: inline-block;
                         padding: 10px;
                         background-color: #d4edda;
@@ -119,9 +119,9 @@ if (isset($_SESSION['user_id'])) {
                         margin-bottom: 10px;
                         border-radius: 5px;
                         font-size: 16px;">
-            ✅ บันทึกการนัดหมายเรียบร้อยแล้ว
-        </div>
-        <?php endif; ?>
+                    ✅ บันทึกการนัดหมายเรียบร้อยแล้ว
+                </div>
+            <?php endif; ?>
         <?php endif; ?>
 
 
@@ -130,7 +130,7 @@ if (isset($_SESSION['user_id'])) {
             <div class="masthead-subheading">"Welcome to our website"</div>
             <div class="masthead-heading text-uppercase">Adviser for diabetics </div>
             <?php if (!isset($_SESSION['user_id'])): ?>
-            <a class="btn btn-primary btn-xl text-uppercase" href="login.php">Sign in</a>
+                <a class="btn btn-primary btn-xl text-uppercase" href="login.php">Sign in</a>
             <?php endif; ?>
 
 
@@ -157,21 +157,21 @@ if (isset($_SESSION['user_id'])) {
                 <?php while ($row = mysqli_fetch_assoc($resultAdvice)) :
                     $modalId = "portfolioModal" . $row['id'];
                 ?>
-                <div class="col-lg-4 col-sm-6 mb-4">
-                    <div class="portfolio-item">
-                        <a class="portfolio-link" data-bs-toggle="modal" href="#<?= $modalId ?>">
-                            <div class="portfolio-hover">
-                                <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                    <div class="col-lg-4 col-sm-6 mb-4">
+                        <div class="portfolio-item">
+                            <a class="portfolio-link" data-bs-toggle="modal" href="#<?= $modalId ?>">
+                                <div class="portfolio-hover">
+                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                                </div>
+                                <img class="img-fluid"
+                                    src="assets/img/uploads/advice/<?= htmlspecialchars($row['image']) ?>" alt="..." />
+                            </a>
+                            <div class="portfolio-caption">
+                                <div class="portfolio-caption-heading"><?= htmlspecialchars($row['name']) ?></div>
+                                <div class="portfolio-caption-subheading text-muted"></div>
                             </div>
-                            <img class="img-fluid"
-                                src="assets/img/uploads/advice/<?= htmlspecialchars($row['image']) ?>" alt="..." />
-                        </a>
-                        <div class="portfolio-caption">
-                            <div class="portfolio-caption-heading"><?= htmlspecialchars($row['name']) ?></div>
-                            <div class="portfolio-caption-subheading text-muted"></div>
                         </div>
                     </div>
-                </div>
                 <?php endwhile; ?>
             </div>
         </div>
@@ -185,56 +185,56 @@ if (isset($_SESSION['user_id'])) {
     while ($row = mysqli_fetch_assoc($resultAdvice)) :
         $modalId = "portfolioModal" . $row['id'];
     ?>
-    <div class="portfolio-modal modal fade" id="<?= $modalId ?>" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="close-modal" data-bs-dismiss="modal">
-                    <img src="assets/img/close-icon.svg" alt="Close modal" />
-                </div>
-                <div class="container">
-                    <div class="row justify-content-center">
-                        <div class="col-lg-8">
-                            <div class="modal-body">
-                                <h2 class="text-uppercase"><?= htmlspecialchars($row['name']) ?></h2>
-                                <p class="item-intro text-muted"><?= nl2br(htmlspecialchars($row['details'])) ?></p>
-                                <img class="img-fluid d-block mx-auto"
-                                    src="assets/img/uploads/advice/<?= htmlspecialchars($row['image']) ?>" alt="..." />
-                                <form action="insert_Advice_problems.php" method="POST">
-                                    <input type="hidden" name="advice_id" value="<?= $row['id'] ?>">
+        <div class="portfolio-modal modal fade" id="<?= $modalId ?>" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="close-modal" data-bs-dismiss="modal">
+                        <img src="assets/img/close-icon.svg" alt="Close modal" />
+                    </div>
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <div class="modal-body">
+                                    <h2 class="text-uppercase"><?= htmlspecialchars($row['name']) ?></h2>
+                                    <p class="item-intro text-muted"><?= nl2br(htmlspecialchars($row['details'])) ?></p>
+                                    <img class="img-fluid d-block mx-auto"
+                                        src="assets/img/uploads/advice/<?= htmlspecialchars($row['image']) ?>" alt="..." />
+                                    <form action="insert_Advice_problems.php" method="POST">
+                                        <input type="hidden" name="advice_id" value="<?= $row['id'] ?>">
 
-                                    <p>
-                                        <input class="form-control" name="problem_text" type="text"
-                                            placeholder="ปัญหา..." required />
-                                    </p>
+                                        <p>
+                                            <input class="form-control" name="problem_text" type="text"
+                                                placeholder="ปัญหา..." required />
+                                        </p>
 
-                                    <p>โปรดรอการตอบกลับจากแพทย์ผู้เชี่ยวชาญผ่านทางอีเมลของคุณ</p>
-
-
-                                    <?php if (isset($_SESSION['user_id'])): ?>
-                                    <button class="btn btn-primary btn-xl text-uppercase" type="submit">
-                                        <i class="fas fa-paper-plane me-1"></i> ส่งคำถาม
-                                    </button>
-                                    <?php else: ?>
-                                    <div class="alert alert-warning text-center mt-2">
-                                        กรุณาเข้าสู่ระบบก่อนส่งคำถาม
-                                    </div>
-                                    <?php endif; ?>
+                                        <p>โปรดรอการตอบกลับจากแพทย์ผู้เชี่ยวชาญผ่านทางอีเมลของคุณ</p>
 
 
-                                    <button class="btn btn-secondary btn-xl text-uppercase" data-bs-dismiss="modal"
-                                        type="button">
-                                        <i class="fas fa-xmark me-1"></i> Close
-                                    </button>
-                                </form>
+                                        <?php if (isset($_SESSION['user_id'])): ?>
+                                            <button class="btn btn-primary btn-xl text-uppercase" type="submit">
+                                                <i class="fas fa-paper-plane me-1"></i> ส่งคำถาม
+                                            </button>
+                                        <?php else: ?>
+                                            <div class="alert alert-warning text-center mt-2">
+                                                กรุณาเข้าสู่ระบบก่อนส่งคำถาม
+                                            </div>
+                                        <?php endif; ?>
 
 
+                                        <button class="btn btn-secondary btn-xl text-uppercase" data-bs-dismiss="modal"
+                                            type="button">
+                                            <i class="fas fa-xmark me-1"></i> Close
+                                        </button>
+                                    </form>
+
+
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
     <?php endwhile; ?>
 
 
@@ -258,20 +258,20 @@ if (isset($_SESSION['user_id'])) {
                     $inverted = ($index % 2 == 0) ? 'timeline-inverted' : '';
                     $imagePath = 'assets/img/uploads/food/' . $row['image'];
                 ?>
-                <li class="<?= $inverted ?>">
-                    <div class="timeline-image">
-                        <img class="rounded-circle img-fluid" src="<?= $imagePath ?>" alt="<?= $row['name'] ?>"
-                            style="height: 170px; object-fit: cover;" />
-                    </div>
-                    <div class="timeline-panel">
-                        <div class="timeline-heading">
-                            <h4><?= htmlspecialchars($row['name']) ?></h4>
+                    <li class="<?= $inverted ?>">
+                        <div class="timeline-image">
+                            <img class="rounded-circle img-fluid" src="<?= $imagePath ?>" alt="<?= $row['name'] ?>"
+                                style="height: 170px; object-fit: cover;" />
                         </div>
-                        <div class="timeline-body">
-                            <p class="text-muted"><?= nl2br(htmlspecialchars($row['details'])) ?></p>
+                        <div class="timeline-panel">
+                            <div class="timeline-heading">
+                                <h4><?= htmlspecialchars($row['name']) ?></h4>
+                            </div>
+                            <div class="timeline-body">
+                                <p class="text-muted"><?= nl2br(htmlspecialchars($row['details'])) ?></p>
+                            </div>
                         </div>
-                    </div>
-                </li>
+                    </li>
                 <?php endwhile; ?>
 
                 <!-- ปิด timeline ด้วย Healthy! -->
@@ -316,51 +316,51 @@ if (isset($_SESSION['user_id'])) {
                 <h2 class="text-uppercase mb-3">📋 ประวัติคำถามของคุณ</h2>
 
                 <?php if (mysqli_num_rows($result) > 0): ?>
-                <table class="table table-bordered table-striped">
-                    <thead class="table-light">
-                        <tr>
-                            <th>ลำดับ</th>
-                            <th>คำถาม</th>
-                            <th>คำตอบจากแพทย์</th>
-                            <th>สถานะ</th>
-                            <th>วันที่ถาม</th>
-                            <th>วันที่ตอบ</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php while ($row = mysqli_fetch_assoc($resultQuestion)): ?>
-                        <tr>
+                    <table class="table table-bordered table-striped">
+                        <thead class="table-light">
+                            <tr>
+                                <th>ลำดับ</th>
+                                <th>คำถาม</th>
+                                <th>คำตอบจากแพทย์</th>
+                                <th>สถานะ</th>
+                                <th>วันที่ถาม</th>
+                                <th>วันที่ตอบ</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php while ($row = mysqli_fetch_assoc($resultQuestion)): ?>
+                                <tr>
 
-                            <td><?= $i++ ?></td>
-                            <td><?= nl2br(htmlspecialchars($row['problem_text'])) ?></td>
-                            <td>
-                                <?php if ($row['answer_text']): ?>
-                                <?= nl2br(htmlspecialchars($row['answer_text'])) ?>
-                                <?php else: ?>
-                                <span class="text-muted">⏳ ยังไม่มีคำตอบ</span>
-                                <?php endif; ?>
-                            </td>
-                            <td>
-                                <?php if ($row['answer_text']): ?>
-                                <span class="badge bg-success">ตอบแล้ว</span>
-                                <?php else: ?>
-                                <span class="badge bg-warning text-dark">รอตอบ</span>
-                                <?php endif; ?>
-                            </td>
-                            <td><?= date("d/m/Y H:i", strtotime($row['created_at'])) ?></td>
-                            <td>
-                                <?php if (!is_null($row['answered_at'])): ?>
-                                <?= date("d/m/Y H:i", strtotime($row['answered_at'])) ?>
-                                <?php else: ?>
-                                <span class="badge bg-warning text-dark">รอ update</span>
-                                <?php endif; ?>
-                            </td>
-                        </tr>
-                        <?php endwhile; ?>
-                    </tbody>
-                </table>
+                                    <td><?= $i++ ?></td>
+                                    <td><?= nl2br(htmlspecialchars($row['problem_text'])) ?></td>
+                                    <td>
+                                        <?php if ($row['answer_text']): ?>
+                                            <?= nl2br(htmlspecialchars($row['answer_text'])) ?>
+                                        <?php else: ?>
+                                            <span class="text-muted">⏳ ยังไม่มีคำตอบ</span>
+                                        <?php endif; ?>
+                                    </td>
+                                    <td>
+                                        <?php if ($row['answer_text']): ?>
+                                            <span class="badge bg-success">ตอบแล้ว</span>
+                                        <?php else: ?>
+                                            <span class="badge bg-warning text-dark">รอตอบ</span>
+                                        <?php endif; ?>
+                                    </td>
+                                    <td><?= date("d/m/Y H:i", strtotime($row['created_at'])) ?></td>
+                                    <td>
+                                        <?php if (!is_null($row['answered_at'])): ?>
+                                            <?= date("d/m/Y H:i", strtotime($row['answered_at'])) ?>
+                                        <?php else: ?>
+                                            <span class="badge bg-warning text-dark">รอ update</span>
+                                        <?php endif; ?>
+                                    </td>
+                                </tr>
+                            <?php endwhile; ?>
+                        </tbody>
+                    </table>
                 <?php else: ?>
-                <div class="alert alert-info">คุณยังไม่ได้ส่งคำถามใด ๆ</div>
+                    <div class="alert alert-info">คุณยังไม่ได้ส่งคำถามใด ๆ</div>
                 <?php endif; ?>
             </div>
 
@@ -427,38 +427,45 @@ if (isset($_SESSION['user_id'])) {
                 <h2 class="text-uppercase mb-3">📋 ประวัติการนัดพบเเพทย์</h2>
 
                 <?php if (mysqli_num_rows($resultMake) > 0): ?>
-                <table class="table table-bordered table-striped">
-                    <thead class="table-light">
-                        <tr>
-                            <th>ลำดับ</th>
-                            <th>วันเวลานัดพบ</th>
-                            <th>รายละเอียด</th>
-                            <th>เเพทย์</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php while ($row = mysqli_fetch_assoc($resultMake)): ?>
-                        <tr>
+                    <table class="table table-bordered table-striped">
+                        <thead class="table-light">
+                            <tr>
+                                <th>ลำดับ</th>
+                                <th>วันเวลานัดพบ</th>
+                                <th>รายละเอียด</th>
+                                <th>เเพทย์</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php while ($row = mysqli_fetch_assoc($resultMake)): ?>
+                                <tr>
 
-                            <td><?= $i++ ?></td>
-                            <td> <?= date("d/m/Y", strtotime($row['appointment_date'])) ?>
-                                : <?= nl2br(htmlspecialchars($row['appointment_time'])) ?>
-                            </td>
-                            <td><?= nl2br(htmlspecialchars($row['symptoms'])) ?></td>
-                            <td>
-                                <?php if (!is_null($row['name_lastname'])): ?>
-                                <?= nl2br(htmlspecialchars($row['name_lastname'])) ?>
-                                <?php else: ?>
-                                <span class="badge bg-warning text-dark">รอ เเพทย์</span>
-                                <?php endif; ?>
-                            </td>
+                                    <td><?= $i++ ?></td>
+                                    <td> <?= date("d/m/Y", strtotime($row['appointment_date'])) ?>
+                                        : <?= nl2br(htmlspecialchars($row['appointment_time'])) ?>
+                                    </td>
+                                    <td><?= nl2br(htmlspecialchars($row['symptoms'])) ?></td>
+                                    <td>
+                                        <?php if (!is_null($row['name_lastname'])): ?>
+                                            <?= nl2br(htmlspecialchars($row['name_lastname'])) ?>
+                                        <?php else: ?>
+                                            <span class="badge bg-warning text-dark">เเพทย์</span>
+                                        <?php endif; ?>
+                                    </td>
+                                    <td>
+                                        <?php if ($row['status'] === 'completed'): ?>
+                                            <span class="badge bg-success">พบแพทย์แล้ว</span>
+                                        <?php else: ?>
+                                            <span class="badge bg-warning text-dark">ยังไม่พบแพทย์</span>
+                                        <?php endif; ?>
+                                    </td>
 
-                        </tr>
-                        <?php endwhile; ?>
-                    </tbody>
-                </table>
+                                </tr>
+                            <?php endwhile; ?>
+                        </tbody>
+                    </table>
                 <?php else: ?>
-                <div class="alert alert-info">คุณยังไม่ได้ส่งคำถามใด ๆ</div>
+                    <div class="alert alert-info">คุณยังไม่ได้ส่งคำถามใด ๆ</div>
                 <?php endif; ?>
             </div>
 

@@ -103,7 +103,7 @@
             u.name_lastname AS user_name
                 FROM appointments ap
                 LEFT JOIN users u ON ap.user_id = u.id
-                WHERE ap.doctor_id IS NULL AND ap.status = 'pending'
+                WHERE  ap.status = 'pending'
                 ORDER BY ap.created_at DESC";
 
         $resultMake = mysqli_query($conn, $sql);

@@ -10,7 +10,7 @@
             <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
                 <li class="nav-item"><a class="nav-link" href="#services">Home</a></li>
                 <li class="nav-item"><a class="nav-link" href="pa.php">Patient information</a></li>
-                <li class="nav-item"><a class="nav-link" href="#questions">Questions from users</a></li>
+                <li class="nav-item"><a class="nav-link" href="#questions">Questions</a></li>
                 <?php if (!isset($_SESSION['user_id'])): ?>
                     <li class="nav-item"><a class="nav-link" href="login.php">Login</a></li>
                     <li class="nav-item"><a class="nav-link" href="regis_patient.php">Register</a></li>

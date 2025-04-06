@@ -15,10 +15,12 @@
                 <li class="nav-item"><a class="nav-link" href="#question">Question</a></li>
 
 
+
                 <?php if (!isset($_SESSION['user_id'])): ?>
                     <li class="nav-item"><a class="nav-link" href="login.php">Login</a></li>
                     <li class="nav-item"><a class="nav-link" href="regis_patient.php">Register</a></li>
                 <?php else: ?>
+                    <li class="nav-item"><a class="nav-link" href="#makeDoctor">Make an Appointment </a></li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-capitalize" href="#" id="userDropdown" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">

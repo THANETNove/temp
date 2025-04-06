@@ -33,25 +33,25 @@ $current_page = basename($_SERVER['PHP_SELF']);
                 </li>
 
                 <?php if (!isset($_SESSION['user_id'])): ?>
-                <li class="nav-item">
-                    <a class="nav-link <?php echo ($current_page == 'login.php') ? 'active' : ''; ?>"
-                        href="login.php">Login</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link <?php echo ($current_page == 'regis_patient.php') ? 'active' : ''; ?>"
-                        href="regis_patient.php">Register</a>
-                </li>
+                    <li class="nav-item">
+                        <a class="nav-link <?php echo ($current_page == 'login.php') ? 'active' : ''; ?>"
+                            href="login.php">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link <?php echo ($current_page == 'regis_patient.php') ? 'active' : ''; ?>"
+                            href="regis_patient.php">Register</a>
+                    </li>
                 <?php else: ?>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-capitalize <?php echo ($current_page == 'profile.php') ? 'active' : ''; ?>"
-                        href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Welcome! <?php echo $_SESSION['user_name']; ?>
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-                        <li><a class="dropdown-item" href="profile.php">โปรไฟล์</a></li>
-                        <li><a class="dropdown-item" href="logout.php">ออกจากระบบ</a></li>
-                    </ul>
-                </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-capitalize <?php echo ($current_page == 'profile.php') ? 'active' : ''; ?>"
+                            href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Welcome! <?php echo $_SESSION['user_name']; ?>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                            <li><a class="dropdown-item" href="profile.php">โปรไฟล์</a></li>
+                            <li><a class="dropdown-item" href="logout.php">ออกจากระบบ</a></li>
+                        </ul>
+                    </li>
                 <?php endif; ?>
             </ul>
         </div>

@@ -1,7 +1,9 @@
 <?php
 require 'connect_db.php';
 // ป้องกัน session_start() ซ้ำ
-
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 // ตรวจสอบว่ามี user_id ใน session หรือไม่
 if (isset($_SESSION['user_id'])) {
     // ถ้าไม่มี session ให้กลับไปหน้า login
@@ -12,10 +14,10 @@ if (isset($_SESSION['user_id'])) {
     $user = mysqli_fetch_assoc($result);
     mysqli_close($conn);
 
-    if ($user['status'] == '2') {
+    if ($user['status'] ==  "2") {
         header("Location: index_admin.php");
         exit(); // หยุดการทำงานของ script
-    } elseif ($user['status'] == '3') {
+    } elseif ($user['status'] == "3") {
         header("Location: index_doctor.php");
         exit();
     }
